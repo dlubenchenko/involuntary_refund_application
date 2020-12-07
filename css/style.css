@@ -1,0 +1,93 @@
+body {
+    background-color: khaki;
+    display: grid;
+    grid-gap: 20px;
+}
+
+#itemsCheck {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+#itemsCheck select:first-child {
+    grid-column: 1 / 3;
+}
+
+.itemsCheck {
+    grid-column: 1 / -1;
+}
+
+#ticket1 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#ticket1 div {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 5px;
+
+}
+
+.fqq, .newtax, .ticket {
+    grid-column: 1 / -1;
+
+}
+
+input {
+    height: 20px;
+    border-radius: 5px;
+}
+
+textarea {
+    border-radius: 5px;
+}
+
+#ticket1 div select, .button>input {
+    height: 26px;
+    border-radius: 5px; 
+}
+
+#itemsCheck>select {
+    height: 26px;
+    border-radius: 5px; 
+}
+
+.taxes {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+}
+
+#ticket1 div.taxes {
+    grid-column: 1 / -1;
+}
+
+#ticket1 div {
+    display: none;
+}
+
+.but {
+    grid-column: 1 / 3;
+}
+
+.butclear {
+    grid-column: 3 / -1;
+}
+
+
+#ticket1 div textarea {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+}
+
+#itemsCheck>input {
+    height: 26px;
+    border-radius: 5px; 
+}
+
+div #newticketnumber {
+    display: none;
+}

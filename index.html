@@ -1,11 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Refund application for involuntary</title>
 </head>
+
 <body>
-    <h1>Hello world!!!</h1>
+    <form name="itemsCheck" id="itemsCheck" class="grid">
+        
+        <select class="" name="Refund application" id="refundType" onchange="findOption()" class="">
+            <option class="item0" disabled selected value="">Оберіть тип повернення</option>
+            <option value="refund1">Повне повернення</option>
+            <option value="refund2">Повне повернення(переоформленно без доплат)</option>
+            <option value="refund3">Повне повернення(переоформленно без доплат для Altea, Farelogix)</option>
+            <option value="refund4">Повне повернення(переоформленно з доплатами)</option>
+            <option value="refund5">Частково використанний квиток</option>
+            <option value="refund6">Частково використанний квиток(переоформленно з доплатами)</option>
+            <option value="refund7">Частково використанний квиток(переоформленно без доплат)</option>
+        </select>
+        <select class="" name="tickets" id="tktNumList" onchange="tktNum()" class="">
+            <option value="Кількість квитків">Кількість квитків</option>
+            <option value="ticket1">1</option>
+            <option value="ticket2">2</option>
+            <option value="ticket3">3</option>
+            <option value="ticket4">4</option>
+            <option value="ticket5">5</option>
+            <option value="ticket6">6</option>
+            <option value="ticket7">7</option>
+            <option value="ticket8">8</option>
+            <option value="ticket9">9</option>
+        </select>
+        <select class="" name="emd" id="emdNumList" onchange="emdNum()" class="">
+            <option value="Кількість EMD">Кількість EMD</option>
+            <option value="emd1">1</option>
+            <option value="emd2">2</option>
+            <option value="emd3">3</option>
+            <option value="emd4">4</option>
+            <option value="emd5">5</option>
+            <option value="emd6">6</option>
+            <option value="emd7">7</option>
+            <option value="emd8">8</option>
+            <option value="emd9">9</option>
+        </select>
+
+        <textarea name="" class="itemsCheck" placeholder="Результат" id="" rows="3"></textarea>
+
+        <input class="but" type="button"value="ТИЦЬ">
+
+        <input class="butclear" type="button" value="ВіНИК" onclick="clear()">
+
+    </form>
+
+    <form id="ticket1" action="ticket1"
+        class="tkt ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9 grid">
+
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 ticket">
+            <textarea name="ticket" id="ticket" placeholder="Вставити квиток" rows="5"></textarea>
+        </div>
+                
+        <div class="refund refund5 fqq">
+            <textarea placeholder="Вставити такси з FQQ" id="fqq" rows="5"></textarea>
+        </div>
+
+        <div class="refund refund4 refund6 newtax">
+            <textarea placeholder="Вставити такси з нового квитка" id="newtax" rows="5"></textarea>
+        </div>
+
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7">
+            <label for="cancelledflight">Відмінений рейс:</label>
+            <input type="cancelledflight" id="cancelledflight" placeholder="Відмінений рейс">
+        </div>
+
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7">
+            <label for="reason">Причина:</label>
+            <select name="reason" id="reason" for="reason">
+                <option disabled selected value=""></option>
+                <option value="CNX">Відмінено</option>
+                <option value="SKCHG">Зміни</option>
+                <option value="SKCHG AND LOST MCT">Нестиковка</option>
+            </select>
+        </div>
+
+        <div class="block refund ticketnumber">
+            <label for="ticketnumber">Номер квитка:</label>
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket7 ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket8 ticket9" placeholder="Номер квитка">
+            <input type="ticketnumber" id="ticketnumber" class="ticketnumber ticket9" placeholder="Номер квитка">
+        </div>
+
+        <div class="block refund ticketnumber">
+            <label for="doi">Дата виписки квитка:</label>
+            <input type="doi" id="doi" class="ticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки квитка">
+        </div>
+
+        <div class="block refund refund2 refund3 refund4 refund5 refund6 refund7 newticketnumber">
+            <label for="newticketnumber">Номер нового квитка:</label>
+            <input type="text" id="newticketnumber" class="newticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket8 ticket9" placeholder="Номер нового квитка">
+            <input type="text" id="newticketnumber" class="newticketnumber ticket9" placeholder="Номер нового квитка">
+        </div>
+
+        <div class="block refund refund2 refund3 refund4 refund5 refund6 refund7 newticketnumber">
+            <label for="newticketdoi">Дата виписки нового квитка:</label>
+            <input type="text" id="newticketdoi" class="newticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки нового квитка">
+        </div>
+
+        <div class="block refund emdnumber">
+            <label for="emdnumber">Номер EMD:</label>
+            <input type="text" class="emdnumber emd1 emd2 emd3 emd4 emd5 emd6 emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd2 emd3 emd4 emd5 emd6 emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd3 emd4 emd5 emd6 emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd4 emd5 emd6 emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd5 emd6 emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd6 emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd7 emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd8 emd9" id="emdnumber" placeholder="Номер EMD">
+            <input type="text" class="emdnumber emd9" id="emdnumber" placeholder="Номер EMD">
+        </div>
+
+        <div class="block refund emdnumber">
+            <label for="emddoi">Дата виписки EMD:</label>
+            <input type="text" class="emdnumber" id="emddoi" placeholder="Дата виписки EMD">
+        </div>
+
+        <div class="block refund refund5 refund6 refund7">
+            <label for="couponstoref">Купони до повернення:</label>
+            <input type="text" id="couponstoref" placeholder="Купони до повернення">
+        </div>
+
+        <div class="block refund refund3 refund7">
+            <label for="farepaid">Оплачений тариф:</label>
+            <input type="text" id="farepaid" placeholder="FARE PAID">
+        </div>
+
+        <div class="block refund refund4 refund6">
+            <label for="addpaid">Тариф + доплати по торафу</label>
+            <input type="text" id="addpaid" placeholder="FARE PAID + ADD PAID">
+        </div>
+
+        <div class="block refund refund3">
+            <label for="tktprice">Вартість квитка:</label>
+            <input type="text" id="tktprice" placeholder="TKT PRICE">
+        </div>
+
+        <div class="block refund refund5 refund6 refund7">
+            <label for="fareused">Використанний тариф:</label>
+            <input type="text" id="fareused" placeholder="FARE USED">
+        </div>
+
+        <div class="block refund refund5">
+            <label for="tottoref">До повернення:</label>
+            <input type="text" id="tottoref" placeholder="TOT TO REF">
+        </div>
+
+        <div class="block refund refund3 refund4 refund5 refund6 refund7">
+            <label for="taxtoref">Такси до повернення:</label>
+            <input type="text" id="taxtoref" placeholder="TAX TO REF">
+        </div>
+        
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp">
+            <label for="fp">Форма оплати:</label>
+            <select name="fp1" id="fp" onchange="findFp()">
+                <option selected value="" disabled></option>
+                <option value="FP CASH">FP CASH</option>
+                <option value="FP CC">FP CC</option>
+                <option value="FP CC + FP CASH">FP CC + CASH</option>
+            </select>
+        </div>
+
+        <div class="block refund cash">
+            <label for="cash">Кеш:</label>
+            <input class="" type="text" id="cash" placeholder="FP CASH">
+        </div>
+
+        <div class="block refund cc">
+            <label for="cc">Карта:</label>
+            <input class="" type="text" id="cc" placeholder="FP CC">
+        </div>
+
+        <div class="block refund refund5">
+            <label for="bsr">BSR:</label>
+            <input type="text" id="bsr" placeholder="BSR заповнити"></textarea>
+        </div>
+
+        <div class="block refund refund5">
+            <label for="roe">ROE:</label>
+            <input type="text" id="roe" placeholder="ROE заповнити"></textarea>
+        </div>
+
+        <div class="block refund refund5">
+            <label for="nuc">NUC:</label>
+            <input type="text" id="nuc" placeholder="використано NUC заповнити"></textarea>
+        </div>
+
+        <div class="block refund refund5">
+            <label for="eqv">Тариф/Еквівалент:</label>
+            <input type="text" id="eqv" placeholder="Тариф/еквівалент заповнити"></textarea>
+        </div>
+
+        <div class="block refund refund5">
+            <label for="yq">Використана YQ:</label>
+            <input type="text" id="yq" placeholder="використана YQ вручну"></textarea>
+        </div>
+
+        <div class="block refund refund5">
+            <label for="yr">Використана YR:</label>
+            <input type="text" id="yr" placeholder="використана YR вручну"></textarea>
+        </div>
+
+        <div class="taxes">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+            <input type="text" class="taxess grid" onchange="taxes()">
+        </div>
+
+    </form>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/callculation.js"></script>
 </body>
+
 </html>
