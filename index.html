@@ -99,7 +99,7 @@
 
         <div class="block refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 ticketnumber" id="ticketdoi">
             <label for="doi">Дата виписки квитка:</label>
-            <input onchange="info()" type="doi" id="doi" class="info ticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки квитка">
+            <input onchange="info()" type="doi" id="doiticket" class="info ticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки квитка">
         </div>
 
         <div class="block refund refund2 refund3 refund4 refund6 refund7 newticketnumber" id="newticketnumber">
@@ -117,7 +117,7 @@
 
         <div class="block refund refund2 refund3 refund4 refund6 refund7 newticketnumber" id="newticketdoi">
             <label for="newticketnumber">Дата виписки нового квитка:</label>
-            <input onchange="info()" type="text" id="newticketnumber" class="info newticketnumber ticket ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки нового квитка">
+            <input onchange="info()" type="text" id="doinewticketnumber" class="info newticketnumber ticket ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки нового квитка">
         </div>
 
         <div class="block refund emdnumber" id="emdnumber">
@@ -135,7 +135,7 @@
 
         <div class="block refund emdnumber" id="emddoi">
             <label for="emddoi">Дата виписки EMD:</label>
-            <input onchange="info()" type="text" class="info emdnumber" id="emddoi" placeholder="Дата виписки EMD">
+            <input onchange="info()" type="text" class="info emdnumber" id="doiemdnumber" placeholder="Дата виписки EMD">
         </div>
 
         <div class="block refund refund5 refund6 refund7">
@@ -173,9 +173,9 @@
             <input onchange="info()" class="info" type="text" id="taxtoref" placeholder="TAX TO REF">
         </div>
         
-        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp">
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp" onchange="findFp()">
             <label for="fp">Форма оплати:</label>
-            <select class="info" name="fp1" id="fp" onchange="findFp()">
+            <select class="info" name="fp1" id="fp">
                 <option selected value="" disabled>Шо там по оплаті?</option>
                 <option value="FP CASH">FP CASH</option>
                 <option value="FP CC">FP CC</option>

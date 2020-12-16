@@ -84,9 +84,9 @@ function info() {
     farePaidAdd = 'FARE PAID + ADD PAID',
     tktPrice = 'TKT PRICE',
     totRef = 'TOT TO REF',
-    fpCahsCc = 'FP CC + FP CASH'
-    let fareUsed = 'FARE USED'
-    const taxToRef = 'TAX TO REF'
+    fpCahsCc = 'FP CC + FP CASH',
+    fareUsed = 'FARE USED',
+    taxToRef = 'TAX TO REF'
 
     let allInfo = []
     document.querySelectorAll('.info').forEach((key) => {
@@ -94,10 +94,52 @@ function info() {
     })
     console.log(allInfo)
 
-    let ticketsPlusNew = `${allInfo[2].value != '' ? tkt + allInfo[2].value : ''} ${allInfo[2].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[12].value != '' ? newTkt + allInfo[12].value : ''} ${allInfo[12].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[3].value != '' ? tkt + allInfo[3].value : ''} ${allInfo[3].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[13].value != '' ? newTkt + allInfo[13].value : ''} ${allInfo[13].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[4].value != '' ? tkt + allInfo[4].value : ''} ${allInfo[4].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[14].value != '' ? newTkt + allInfo[14].value : ''} ${allInfo[14].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[5].value != '' ? tkt + allInfo[5].value : ''} ${allInfo[5].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[15].value != '' ? newTkt + allInfo[15].value : ''} ${allInfo[15].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[6].value != '' ? tkt + allInfo[6].value : ''} ${allInfo[6].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[16].value != '' ? newTkt + allInfo[16].value : ''} ${allInfo[16].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[7].value != '' ? tkt + allInfo[7].value : ''} ${allInfo[7].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[17].value != '' ? newTkt + allInfo[17].value : ''} ${allInfo[17].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[8].value != '' ? tkt + allInfo[8].value : ''} ${allInfo[8].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[18].value != '' ? newTkt + allInfo[18].value : ''} ${allInfo[18].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[9].value != '' ? tkt + allInfo[9].value : ''} ${allInfo[9].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[19].value != '' ? newTkt + allInfo[19].value : ''} ${allInfo[19].value != '' ? doi + allInfo[21].value + ' /' : ''}${allInfo[10].value != '' ? tkt + allInfo[10].value : ''} ${allInfo[10].value != '' ? doi + allInfo[11].value + ' /' : ''} ${allInfo[20].value != '' ? newTkt + allInfo[20].value : ''} ${allInfo[20].value != '' ? doi + allInfo[21].value + ' /' : ''}`.trimRight()
+    let tickets = []
+    let newTickets = []
+    let emdTickets = []
+    allInfo.forEach((key) => {
+        if (key.value !== '') {
+            if (!(key.name).indexOf('ticket')) {
+                tickets.push(tkt + key.value)
+            }
+            if (!(key.name).indexOf('doiticket')) {
+                tickets.push(doi + key.value)
+                // console.log(tickets)
+            }
+        }
+        if (key.value !== '') {
+            if (!(key.name).indexOf('newticketnumber')) {
+                newTickets.push(newTkt + key.value)
+            }
+            if (!(key.name).indexOf('doinewticketnumber')) {
+                newTickets.push(doi + key.value)
+                // console.log(newTickets)
+            }
+        }
+        if (key.value !== '') {
+            if (!(key.name).indexOf('emdnumber')) {
+                emdTickets += `${emdNum}${key.value} `
+            }
+            if (!(key.name).indexOf('doiemdnumber')) {
+                emdTickets += `${doi}${key.value} /`
+                console.log(emdTickets)
+            }
+        }
+    })
 
-    let firstReasone = `${allInfo[0].value != '' ? involDt + allInfo[0].value + ' ' + allInfo[1].value + ' / ' : ''}`
-    let emd = ``
+    let ticketInfo = ''
+    for (let i = 0; i < tickets.length-1; i++) {
+        const el1 = tickets[i];
+        const el2 = newTickets[i]
+        const el3 = emdTickets[i]
+        if (newTickets.length === 0 || el2 === 'undefined') {
+            ticketInfo += `${el1} ${tickets[tickets.length-1]} / `
+            console.log(ticketInfo)
+        } else {
+        ticketInfo += `${el1} ${tickets[tickets.length-1]} / ${el2} ${newTickets[tickets.length-1]} / `
+        console.log(ticketInfo)
+        }
+    }
 
-    document.querySelector('.result').value = `${firstReasone}${ticketsPlusNew}` 
+    document.querySelector('.result').value = `${involDt}${allInfo[0].value} ${allInfo[1].value} / ${ticketInfo}${emdTickets} ${allInfo[39].value}`
 }
