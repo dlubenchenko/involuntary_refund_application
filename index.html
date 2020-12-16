@@ -21,6 +21,7 @@
             <option value="refund7">Частково використанний квиток(переоформленно без доплат)</option>
             <option value="refund8">Парсер КіВі</option>
             <option value="refund9">Парсер GH</option>
+            <option value="refund10">Парсер FlyArystan</option>
         </select>
         <select class="" name="tickets" id="tktNumList" onchange="option()" class="">
             <option value="ticket0">Кількість квитків</option>
@@ -58,7 +59,7 @@
     <form id="ticket" action="ticket1" class="tkt ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9 grid">
 
         <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 ticket textarea">
-            <textarea class="" name="ticket" id="ticket" placeholder="Вставити квиток" rows="5" onchange="twdCallculation()"></textarea>
+            <textarea class="" name="ticket" id="ticket" placeholder="Вставити квиток" rows="5"></textarea>
         </div>
                 
         <div class="refund refund5 fqq textarea">
@@ -67,6 +68,18 @@
 
         <div class="refund refund4 refund6 refund7 newtax textarea">
             <textarea placeholder="Вставити такси з нового квитка" id="newtax" rows="5"></textarea>
+        </div>
+
+        <div class="refund refund8 ticket textarea kiwi" onchange="kiwi()">
+            <textarea class="" name="ticket" id="kiwi" placeholder="Вставити строку ківі" rows="5"></textarea>
+        </div>
+
+        <div class="refund refund9 ticket textarea glory" onchange="glory()">
+            <textarea class="" name="ticket" id="glory" placeholder="Вставити строку GH" rows="5"></textarea>
+        </div>
+
+        <div class="refund refund10 ticket textarea arystan" onchange="arystan()">
+            <textarea class="" name="ticket" id="arystan" placeholder="Вставити строку FlyArystan" rows="5"></textarea>
         </div>
 
         <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7">
@@ -173,9 +186,9 @@
             <input onchange="info()" class="info" type="text" id="taxtoref" placeholder="TAX TO REF">
         </div>
         
-        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp" onchange="findFp()">
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp">
             <label for="fp">Форма оплати:</label>
-            <select class="info" name="fp1" id="fp">
+            <select class="info" name="fp1" id="fp" onchange="findFp()">
                 <option selected value="" disabled>Шо там по оплаті?</option>
                 <option value="FP CASH">FP CASH</option>
                 <option value="FP CC">FP CC</option>
