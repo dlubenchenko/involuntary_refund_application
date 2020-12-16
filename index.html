@@ -50,16 +50,16 @@
 
         <textarea name="" class="itemsCheck result" placeholder="Результат" id=""></textarea>
 
-        <input class="but" type="button"value="ТИЦЬ">
+        <input class="but" type="button" value="ТИЦЬ" onclick="partial()">
 
-        <input class="butclear" type="button" value="ВіНИК" onclick="clear()">
+        <input class="butclear" type="button" value="ВіНИК" onclick="clearAll()">
 
     </form>
 
     <form id="ticket" action="ticket1" class="tkt ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9 grid">
 
         <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 ticket textarea">
-            <textarea class="" name="ticket" id="ticket" placeholder="Вставити квиток" rows="5"></textarea>
+            <textarea class="ticket" name="ticket" id="ticket" placeholder="Вставити квиток" rows="5"></textarea>
         </div>
                 
         <div class="refund refund5 fqq textarea">
@@ -80,6 +80,10 @@
 
         <div class="refund refund010 textarea arystan" onchange="arystan()">
             <textarea class="" name="ticket" id="arystan" placeholder="Вставити строку FlyArystan" rows="5"></textarea>
+        </div>
+
+        <div class="refund refund3 refund4 refund5 refund6 refund7 textarea">
+            <textarea class="callculation" name="ticket" id="callculation" placeholder="Розрахунки" rows="5"></textarea>
         </div>
 
         <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7">
@@ -173,37 +177,17 @@
 
         <div class="block refund refund5 refund6 refund7">
             <label for="fareused">Використанний тариф:</label>
-            <input onchange="info()" class="info" type="text" id="fareused" placeholder="FARE USED">
+            <input onchange="info()" class="info" type="text" id="fareused" placeholder="FARE USED" disabled>
         </div>
 
         <div class="block refund refund5">
             <label for="tottoref">До повернення:</label>
-            <input onchange="info()" class="info" type="text" id="tottoref" placeholder="TOT TO REF">
+            <input onchange="info()" class="info" type="text" id="tottoref" placeholder="TOT TO REF" disabled>
         </div>
 
         <div class="block refund refund3 refund4 refund5 refund6 refund7">
             <label for="taxtoref">Такси до повернення:</label>
-            <input onchange="info()" class="info" type="text" id="taxtoref" placeholder="TAX TO REF">
-        </div>
-        
-        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp">
-            <label for="fp">Форма оплати:</label>
-            <select class="info" name="fp1" id="fp" onchange="findFp()">
-                <option selected value="" disabled>Шо там по оплаті?</option>
-                <option value="FP CASH">FP CASH</option>
-                <option value="FP CC">FP CC</option>
-                <option value="FP CC + FP CASH">FP CC + CASH</option>
-            </select>
-        </div>
-
-        <div class="block refund cash">
-            <label for="cash">Кеш:</label>
-            <input onchange="info()" class="info" type="text" id="cash" placeholder="FP CASH">
-        </div>
-
-        <div class="block refund cc">
-            <label for="cc">Карта:</label>
-            <input onchange="info()" class="info" type="text" id="cc" placeholder="FP CC">
+            <input onchange="info()" class="info taxtoref" type="text" id="taxtoref" placeholder="TAX TO REF" disabled>
         </div>
 
         <div class="block refund refund5">
@@ -235,38 +219,58 @@
             <label for="yr">Використана YR:</label>
             <input onchange="info()" class="info" type="text" id="yr" placeholder="використана YR вручну"></textarea>
         </div>
+        
+        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp">
+            <label for="fp">Форма оплати:</label>
+            <select class="info" name="fp1" id="fp" onchange="findFp()">
+                <option selected value="" disabled>Шо там по оплаті?</option>
+                <option value="FP CASH">FP CASH</option>
+                <option value="FP CC">FP CC</option>
+                <option value="FP CC + FP CASH">FP CC + CASH</option>
+            </select>
+        </div>
 
-        <div class="taxes refund">
-            <input id="tax1" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax2" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax3" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax4" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax5" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax6" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax7" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax8" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax9" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax10" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax11" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax12" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax13" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax14" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax15" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax16" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax17" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax18" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax19" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax21" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax22" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax23" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax24" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax25" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax26" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax27" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax28" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax29" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax30" type="text" class="taxes grid info" onchange="taxes()">
-            <input id="tax31" type="text" class="taxes grid info" onchange="taxes()">
+        <div class="block refund cash">
+            <label for="cash">Кеш:</label>
+            <input onchange="info()" class="info" type="text" id="cash" placeholder="FP CASH">
+        </div>
+
+        <div class="block refund cc">
+            <label for="cc">Карта:</label>
+            <input onchange="info()" class="info" type="text" id="cc" placeholder="FP CC">
+        </div>
+
+        <div class="" id="taxes">
+            <input id="tax1" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax2" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax3" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax4" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax5" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax6" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax7" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax8" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax9" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax10" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax11" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax12" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax13" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax14" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax15" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax16" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax17" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax18" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax19" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax21" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax22" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax23" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax24" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax25" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax26" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax27" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax28" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax29" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax30" type="text" class="refund taxes info" onchange="taxes()">
+            <input id="tax31" type="text" class="refund taxes info" onchange="taxes()">
         </div>
 
     </form>

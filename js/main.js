@@ -73,12 +73,19 @@ function option() {
 
 
 function info() {
+
+    let allInfo = []
+    document.querySelectorAll('.info').forEach((key) => {
+        allInfo.push({name: key.id, value: key.value})
+    })
+    // console.log(allInfo)
+
     const involDt = 'inv rf dt '.toUpperCase(),
     doi = 'DOI - ',
     tkt = 'TKT - ',
     newTkt = 'NEWTKT - ',
     emdNum = 'EMD - ',
-    cpns = 'CPN TO REF - ',
+    cpns = `/ CPN TO REF - ${allInfo[32].value}`,
     reissue = 'REISSUE-0',
     farePaid = 'FARE PAID',
     farePaidAdd = 'FARE PAID + ADD PAID',
@@ -87,12 +94,6 @@ function info() {
     fpCahsCc = 'FP CC + FP CASH',
     fareUsed = 'FARE USED',
     taxToRef = 'TAX TO REF'
-
-    let allInfo = []
-    document.querySelectorAll('.info').forEach((key) => {
-        allInfo.push({name: key.id, value: key.value})
-    })
-    console.log(allInfo)
 
     let tickets = []
     let newTickets = []
@@ -104,7 +105,7 @@ function info() {
             }
             if (!(key.name).indexOf('doiticket')) {
                 tickets.push(doi + key.value)
-                // console.log(tickets)
+                console.log(tickets)
             }
         }
         if (key.value !== '') {
@@ -113,7 +114,7 @@ function info() {
             }
             if (!(key.name).indexOf('doinewticketnumber')) {
                 newTickets.push(doi + key.value)
-                // console.log(newTickets)
+                console.log(newTickets)
             }
         }
         if (key.value !== '') {
@@ -132,14 +133,36 @@ function info() {
         const el1 = tickets[i];
         const el2 = newTickets[i]
         const el3 = emdTickets[i]
-        if (newTickets.length === 0 || el2 === 'undefined') {
+        if (newTickets.length === 0) {
             ticketInfo += `${el1} ${tickets[tickets.length-1]} / `
             console.log(ticketInfo)
         } else {
         ticketInfo += `${el1} ${tickets[tickets.length-1]} / ${el2} ${newTickets[tickets.length-1]} / `
-        console.log(ticketInfo)
+        // console.log('ticketInfo', ticketInfo)
         }
     }
 
-    document.querySelector('.result').value = `${involDt}${allInfo[0].value} ${allInfo[1].value} / ${ticketInfo}${emdTickets} ${allInfo[39].value}`
+
+    document.querySelector('.result').value = `${involDt}${allInfo[0].value} ${allInfo[1].value}/ ${ticketInfo}${emdTickets} ${allInfo[32].value !=='' ? cpns : ''}${allInfo[45].value}`
+    document.querySelector('.callculation').value = `${farePaid} ${allInfo[33].value} /  ${farePaidAdd} ${allInfo[34].value} / ${tktPrice} ${allInfo[35].value} / ${fareUsed} ${allInfo[36].value} / ${taxToRef} ${allInfo[38].value} / ${totRef} ${allInfo[37].value}`
+}
+
+
+function clearAll() {
+    const inputs = document.querySelectorAll('#ticket input')
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value = ''
+    }
+    const textarea = document.querySelectorAll('ticket textarea')
+    for (let i = 0; i < textarea.length; i++) {
+        textarea[i].value = ''
+    }
+    const select = document.querySelectorAll('ticket select')
+    for (let i = 0; i < select.length; i++) {
+        select[i].value = ''
+    }
+    const textareaTkt = document.querySelectorAll('#itemsCheck textarea')
+    for (let i = 0; i < textareaTkt.length; i++) {
+        textareaTkt[i].value = ''
+    }
 }
