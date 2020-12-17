@@ -45,7 +45,7 @@ for (let i = 0; i < document.forms.ticket1.querySelectorAll('div').length; i++) 
 
 
 
-
+ // parser glory
 function glory() {
     const gloryAll = document.getElementById('glory').value.split(/\n/gi)
     console.log(gloryAll)
@@ -67,7 +67,7 @@ function glory() {
 
 
 
-
+ // parser kiwi
 function kiwi() {
     const kiwiAll = document.getElementById('kiwi').value.split(/\n/gi)
     // console.log(kiwiAll, kiwiAll.length / 3)
@@ -100,7 +100,7 @@ function kiwi() {
 
 
 
-
+ // parser arystan
 function arystan() {
     const arystanAll = document.getElementById('arystan').value.split(/\n/gi)
     // console.log(arystanAll)
@@ -111,7 +111,7 @@ function arystan() {
         const a = new Date(el[2].split('.').reverse()).toString().split(' ')
         // console.log(el)
         // console.log(a)
-        arystanParse += `${el[0]} ${a[2]}${a[1].toUpperCase()}${a[3].slice(-2)} ${el[3].replace(':','')} ${el[5].replace(':','')}\n`
+        arystanParse += `${el[0]} ${a[2]}${a[1].toUpperCase()}${a[3].slice(-2)} ${el[1].replace('-','')} ${el[3].replace(':','')} ${el[5].replace(':','')}\n`
         // console.log(arystanParse)
         document.querySelector('.result').value = arystanParse
     }

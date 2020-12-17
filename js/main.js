@@ -165,4 +165,8 @@ function clearAll() {
     for (let i = 0; i < textareaTkt.length; i++) {
         textareaTkt[i].value = ''
     }
+    const textareaInfo = document.querySelectorAll('#ticket textarea')
+    for (let i = 0; i < textareaInfo.length; i++) {
+        textareaInfo[i].value = ''
+    }
 }

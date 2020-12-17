@@ -1,2 +1,52 @@
 KC7351 NQZ-PLX 03.01.2021 10:25 - 11:45
 KC7352 PLX-NQZ 10.01.2021 12:15 - 13:50
+
+
+UA931 ORD LHR TK 2021-01-04T18:20:00 2021-01-05T07:55:00
+UA932 LHR ORD TK 2021-01-10T00:45:00 2021-01-11T06:15:00
+
+17:20
+Mon 28 Dec
+London
+LTN
+Wizz Air
+2h 50m
+Wizz Air
+Airline:
+Wizz Air
+Flight no:
+W6 4493
+20:10
+Mon 28 Dec
+Lisbon
+LIS
+20:50
+Wed 6 Jan
+Lisbon
+LIS
+Wizz Air
+2h 45m
+Wizz Air
+Airline:
+Wizz Air
+Flight no:
+W6 4494
+23:35
+Wed 6 Jan
+London
+LTN
+06:55
+Fri 8 Jan
+London
+LTN
+Wizz Air UK
+3h 50m
+Wizz Air UK
+Airline:
+Wizz Air UK
+Flight no:
+W9 8125
+13:45
+Fri 8 Jan
+Moscow
+VKO
