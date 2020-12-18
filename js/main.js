@@ -142,7 +142,7 @@ function info() {
         }
     }
 
-    partial()
+
     document.querySelector('.result').value = `${involDt}${allInfo[0].value} ${allInfo[1].value} / ${ticketInfo}${emdTickets} ${allInfo[32].value !=='' ? cpns + ' /     ' : ''}${allInfo[45].value}`
     document.querySelector('.callculation').value = `${farePaid} ${allInfo[33].value} /  ${farePaidAdd} ${allInfo[34].value} / ${tktPrice} ${allInfo[35].value} / ${fareUsed} ${allInfo[36].value} / ${taxToRef} ${allInfo[38].value} / ${totRef} ${allInfo[37].value}`
 }
