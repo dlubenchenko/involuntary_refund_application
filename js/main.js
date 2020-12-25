@@ -76,97 +76,188 @@ function info() {
 
     let allInfo = []
     document.querySelectorAll('.info').forEach((key) => {
-        allInfo.push({name: key.id, value: key.value})
+        allInfo.push({
+            name: key.id,
+            value: key.value
+        })
     })
     // console.log(allInfo)
 
-    const involDt = 'inv rf dt '.toUpperCase(),
-    doi = 'DOI - ',
-    tkt = 'TKT - ',
-    newTkt = 'NEWTKT - ',
-    emdNum = 'EMD - ',
-    cpns = `/ CPN TO REF - ${allInfo[32].value}`,
-    reissue = 'REISSUE-0',
-    farePaid = 'FARE PAID',
-    farePaidAdd = 'FARE PAID + ADD PAID',
-    tktPrice = 'TKT PRICE',
-    totRef = 'TOT TO REF',
-    fpCahsCc = 'FP CC + FP CASH',
-    fareUsed = 'FARE USED',
-    taxToRef = 'TAX TO REF'
+    const involDt = 'INV RF DT ',
+        doi = 'DOI - ',
+        tkt = 'TKT - ',
+        newTkt = 'NEWTKT - ',
+        emdNum = 'EMD - ',
+        cpns = `CPN TO REF - ${allInfo[32].value}`,
+        reissue = 'REISSUE-0',
+        farePaid = 'FARE PAID',
+        farePaidAdd = 'FARE PAID + ADD PAID',
+        tktPrice = 'TKT PRICE',
+        totRef = 'TOT TO REF',
+        fpCahsCc = 'FP CC + FP CASH',
+        fareUsed = 'FARE USED',
+        taxToRef = 'TAX TO REF'
 
-    let tickets = []
-    let newTickets = []
-    let emdTickets = []
-    allInfo.forEach((key) => {
-        if (key.value !== '') {
-            if (!(key.name).indexOf('ticket')) {
-                tickets.push(tkt + key.value)
-            }
-            if (!(key.name).indexOf('doiticket')) {
-                tickets.push(doi + key.value)
-                console.log(tickets)
-            }
+    const tktNum = [
+        [],
+        [],
+        [],
+        []
+    ]
+    for (let i = 0; i < allInfo.length; i++) {
+        const el = allInfo[i];
+        if (el.name.slice(0, 6) === 'ticket' && el.value != '') {
+            tktNum[1].push(`${tkt}${el.value} ${doi}${allInfo[11].value}`)
         }
-        if (key.value !== '') {
-            if (!(key.name).indexOf('newticketnumber')) {
-                newTickets.push(newTkt + key.value)
-            }
-            if (!(key.name).indexOf('doinewticketnumber')) {
-                newTickets.push(doi + key.value)
-                console.log(newTickets)
-            }
+        if (el.name.slice(0, 15) === 'newticketnumber' && el.value != '') {
+            tktNum[2].push(`${newTkt}${el.value} ${doi}${allInfo[21].value}`)
         }
-        if (key.value !== '') {
-            if (!(key.name).indexOf('emdnumber')) {
-                emdTickets += `${emdNum}${key.value} `
-            }
-            if (!(key.name).indexOf('doiemdnumber')) {
-                emdTickets += `${doi}${key.value} /`
-                console.log(emdTickets)
-            }
-        }
-    })
-
-    let ticketInfo = ''
-    for (let i = 0; i < tickets.length-1; i++) {
-        const el1 = tickets[i];
-        const el2 = newTickets[i]
-        const el3 = emdTickets[i]
-        if (newTickets.length === 0) {
-            ticketInfo += `${el1} ${tickets[tickets.length-1]} / `
-            console.log(ticketInfo)
-        } else {
-        ticketInfo += `${el1} ${tickets[tickets.length-1]} / ${el2} ${newTickets[tickets.length-1]} / `
-        // console.log('ticketInfo', ticketInfo)
+        if (el.name.slice(0, 9) === 'emdnumber' && el.value != '') {
+            tktNum[3].push(`${emdNum}${el.value} ${doi}${allInfo[31].value}`)
         }
     }
 
+    tktNum[0].push(`${involDt}${allInfo[0].value} ${allInfo[1].value}`)
 
-    document.querySelector('.result').value = `${involDt}${allInfo[0].value} ${allInfo[1].value} / ${ticketInfo}${emdTickets} ${allInfo[32].value !=='' ? cpns + ' /     ' : ''}${allInfo[45].value}`
-    document.querySelector('.callculation').value = `${farePaid} ${allInfo[33].value} /  ${farePaidAdd} ${allInfo[34].value} / ${tktPrice} ${allInfo[35].value} / ${fareUsed} ${allInfo[36].value} / ${taxToRef} ${allInfo[38].value} / ${totRef} ${allInfo[37].value}`
+    if ('refund5 refund6 refund7'.indexOf(document.itemsCheck.refundType.value) != -1) {
+        if (tktNum[2].length > 0) {
+            for (let i = 0; i < tktNum[1].length; i++) {
+                const el = tktNum[1][i];
+                tktNum[0].push(tktNum[1][i])
+                tktNum[0].push(tktNum[2][i])
+                tktNum[0].push(`${cpns}`)
+                tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
+                tktNum[0].push(`${allInfo[45].value}`)
+            }
+        } else {
+            for (let i = 0; i < tktNum[1].length; i++) {
+                const el = tktNum[1][i];
+                tktNum[0].push(tktNum[1][i])
+                tktNum[0].push(`${cpns}`)
+                tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
+                tktNum[0].push(`${allInfo[45].value}`)
+                if (tktNum[3].length > 0) {
+                    tktNum[3].push(tktNum[3][i])
+                }
+            }
+        }
+    } else if ('refund1 refund2'.indexOf(document.itemsCheck.refundType.value) != -1) {
+        if (tktNum[2].length > 0) {
+            for (let i = 0; i < tktNum[1].length; i++) {
+                const el = tktNum[1][i];
+                tktNum[0].push(tktNum[1][i])
+                tktNum[0].push(tktNum[2][i])
+                tktNum[0].push(`${allInfo[45].value}`)
+            }
+        } else {
+            for (let i = 0; i < tktNum[1].length; i++) {
+                const el = tktNum[1][i];
+                tktNum[0].push(tktNum[1][i])
+                tktNum[0].push(`${allInfo[45].value}`)
+                if (tktNum[3].length > 0) {
+                    tktNum[3].push(tktNum[3][i])
+                }
+            }
+        }
+    } else if ('refund3 refund4'.indexOf(document.itemsCheck.refundType.value) != -1) {
+        if (tktNum[2].length > 0) {
+            for (let i = 0; i < tktNum[1].length; i++) {
+                const el = tktNum[1][i];
+                tktNum[0].push(tktNum[1][i])
+                tktNum[0].push(tktNum[2][i])
+                tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
+                tktNum[0].push(`${allInfo[45].value}`)
+            }
+        } else {
+            for (let i = 0; i < tktNum[1].length; i++) {
+                const el = tktNum[1][i];
+                tktNum[0].push(tktNum[1][i])
+                tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
+                tktNum[0].push(`${allInfo[45].value}`)
+                if (tktNum[3].length > 0) {
+                    tktNum[3].push(tktNum[3][i])
+                }
+            }
+        }
+    }
+
+    if (tktNum[3].length > 0) {
+        for (let i = 0; i < tktNum[3].length; i++) {
+            tktNum[0].push(tktNum[3][i])
+            tktNum[0].push(`${allInfo[45].value}`)
+        }
+    }
+    
+
+
+
+    // console.log(tktNum)
+
+    var result = document.querySelector('.result').value = `${tktNum[0].join(' / ')}`
+
+
 }
 
 
 function clearAll() {
     const inputs = document.querySelectorAll('#ticket input')
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].value = ''
-    }
+    inputs.forEach(key => key.value = '')
+
     const textarea = document.querySelectorAll('ticket textarea')
-    for (let i = 0; i < textarea.length; i++) {
-        textarea[i].value = ''
-    }
-    const select = document.querySelectorAll('ticket select')
-    for (let i = 0; i < select.length; i++) {
-        select[i].value = ''
-    }
+    textarea.forEach(key => key.value = '')
+
+    const select = document.querySelectorAll('#ticket select')
+    select.forEach(key => key.value = '')
+
     const textareaTkt = document.querySelectorAll('#itemsCheck textarea')
-    for (let i = 0; i < textareaTkt.length; i++) {
-        textareaTkt[i].value = ''
-    }
+    textareaTkt.forEach(key => key.value = '')
+
     const textareaInfo = document.querySelectorAll('#ticket textarea')
-    for (let i = 0; i < textareaInfo.length; i++) {
-        textareaInfo[i].value = ''
-    }
+    textareaInfo.forEach(key => key.value = '')
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function twdCallculation() {
+//     const tempTwdTax = document.querySelector('textarea#ticket').value
+//     const twdTax = tempTwdTax
+//         .replace(/\n/g,' ')
+//         .replace(/:/g,' ')
+//         .replace(/-/g,' ')
+//         .replace(/BSR/g,'BSR ')
+//         .replace(/ROE/g,'ROE ')
+//         .split(' ')
+//         .filter(tax => tax != '')
+//         .forEach((key, i) => {
+//             if (key === 'BSR') {
+//                 i++
+//                 console.log()
+//             } 
+//             if (key === 'ROE') {
+//                 ++i
+//                 console.log(key)
+//             }
+//         })
+
+//         console.log(twdTax)
+
+
+
+// }

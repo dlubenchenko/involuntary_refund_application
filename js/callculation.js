@@ -14,31 +14,7 @@ let fareUsed = 'FARE USED'
 const taxToRef = 'TAX TO REF'
 
 
-function twdCallculation() {
-    const tempTwdTax = document.querySelectorAll('div')[1].children[0].value
-    const twdTax = tempTwdTax
-        .replace(/\n/g,' ')
-        .replace(/:/g,' ')
-        .replace(/-/g,' ')
-        .replace(/BSR/g,'BSR ')
-        .replace(/ROE/g,'ROE ')
-        .split(' ')
-        .filter(tax => tax != '')
-        
-        console.log(twdTax)
-        document.forms.ticket1[3].value = twdTax[twdTax.indexOf('TKT')+1]
-        document.forms.ticket1[4].value = twdTax.indexOf('DOI') === -1 ? twdTax[twdTax.indexOf('ISSUED')+1] : twdTax[twdTax.indexOf('DOI')+1]
-        document.querySelectorAll('div')[20].lastElementChild.value = twdTax.indexOf('BSR') === -1 ? 1 : Number(twdTax[twdTax.indexOf('BSR')+1])
-        document.querySelectorAll('div')[21].lastElementChild.value = twdTax.indexOf('ROE') === -1 ? 1 : +twdTax[twdTax.indexOf('ROE')+1]
 
-        let allInfo = {}
-for (let i = 0; i < document.forms.ticket1.querySelectorAll('div').length; i++) {
-    let temp = document.forms.ticket1.querySelectorAll('div')[i].lastElementChild.id
-    allInfo[temp] = document.forms.ticket1.querySelectorAll('div')[i].lastElementChild.value
-    }
-    document.forms.itemsCheck.querySelectorAll('div')[0].children[0].value = `${involDt} ${allInfo.cancelledflight} ${allInfo.reason} / ${tkt}${allInfo.ticketnumber}`
-    console.log(allInfo)
-}
 
 
 
@@ -48,17 +24,17 @@ for (let i = 0; i < document.forms.ticket1.querySelectorAll('div').length; i++) 
  // parser glory
 function glory() {
     const gloryAll = document.getElementById('glory').value.split(/\n/gi)
-    console.log(gloryAll)
+    // console.log(gloryAll)
     let gloryParse = ''
 
     for (let i = 0; i < gloryAll.length; i++) {
         const el = gloryAll[i].split(' ');
         const a = new Date(el[4]).toString().split(' ')
         const b = new Date(el[5]).toString().split(' ')
-        console.log(el)
-        console.log(a)
+        // console.log(el)
+        // console.log(a)
         gloryParse += `${el[0]} ${a[2]}${a[1].toUpperCase()}${a[3].slice(-2)} ${el[1]}${el[2]} ${a[4].split(':').join('').slice(0, 4)} ${b[4].split(':').join('').slice(0, 4)} ${b[2]}${b[1].toUpperCase()}${b[3].slice(-2)}\n`
-        console.log(gloryParse)
+        // console.log(gloryParse)
         document.querySelector('.result').value = gloryParse
     }
 }
@@ -136,7 +112,7 @@ function partial() {
     const bsr = +document.querySelector('#bsr').value,
         roe = +document.querySelector('#roe').value,
         nuc = +document.querySelector('#nuc').value,
-        fare = +document.querySelector('#farepaid').value
+        fare = +document.querySelector('#eqv').value
         // console.log(findTaxes)
     // console.log(findTaxes)
     // console.log(taxesFqq)
@@ -145,7 +121,7 @@ function partial() {
 
     // фільтр всіх такс
     let allTaxes = findTaxes
-        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(currency))
+        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(currency) && tax.indexOf('TAX'))
         .map(tax => {
             return {
                 name: tax.slice(-2),
@@ -263,7 +239,7 @@ function partial() {
 
 
     // використанний/до повернення тариф/такси / розрахунки
-    const usedFare = document.querySelector('#fareused').value = (nuc * roe * bsr).toFixed(2)
+    let usedFare = document.querySelector('#fareused').value = (nuc * roe * bsr).toFixed(2)
     const fareRef = +fare - (+usedFare).toFixed(2)
     const totalToRef = document.querySelector('#tottoref').value = (+fareRef + +sumTax).toFixed(2)
     // console.log(usedFare)
