@@ -86,9 +86,9 @@ function partial() {
         newTkt = 'NEWTKT - ',
         emdNum = 'EMD - ',
         reissue = 'REISSUE-0',
-        farePaid = 'FARE PAID',
+        farePaidText = 'FARE PAID',
         farePaidAdd = 'FARE PAID + ADD PAID',
-        tktPrice = 'TKT PRICE',
+        tktPriceText = 'TKT PRICE',
         totRef = 'TOT TO REF',
         fpCahsCc = 'FP CC + FP CASH',
         fareUsd = 'FARE USED',
@@ -357,6 +357,8 @@ function partial() {
 
     // використанний/до повернення тариф/такси / розрахунки
     let fare = document.querySelector('#eqv').value = totalAll - +sumTax
+    let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTax
+    let tktPrice = document.querySelector('#tktprice').value = totalAll
     let nuc = +document.querySelector('#nuc').value
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
     let fareRef = fare - fareUsed
