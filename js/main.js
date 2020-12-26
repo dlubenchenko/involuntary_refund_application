@@ -107,17 +107,17 @@ function info() {
     for (let i = 0; i < allInfo.length; i++) {
         const el = allInfo[i];
         if (el.name.slice(0, 6) === 'ticket' && el.value != '') {
-            tktNum[1].push(`${tkt}${el.value} ${doi}${allInfo[11].value}`)
+            tktNum[1].push(`${tkt}${el.value.trim()} ${doi}${allInfo[11].value.trim()}`)
         }
         if (el.name.slice(0, 15) === 'newticketnumber' && el.value != '') {
-            tktNum[2].push(`${newTkt}${el.value} ${doi}${allInfo[21].value}`)
+            tktNum[2].push(`${newTkt}${el.value.trim()} ${doi}${allInfo[21].value.trim()}`)
         }
         if (el.name.slice(0, 9) === 'emdnumber' && el.value != '') {
-            tktNum[3].push(`${emdNum}${el.value} ${doi}${allInfo[31].value}`)
+            tktNum[3].push(`${emdNum}${el.value.trim()} ${doi}${allInfo[31].value.trim()}`)
         }
     }
 
-    tktNum[0].push(`${involDt}${allInfo[0].value} ${allInfo[1].value}`)
+    tktNum[0].push(`${involDt}${allInfo[0].value.trim()} ${allInfo[1].value}`)
 
     if ('refund5 refund6 refund7'.indexOf(document.itemsCheck.refundType.value) != -1) {
         if (tktNum[2].length > 0) {
@@ -140,8 +140,8 @@ function info() {
         if (tktNum[2].length > 0) {
             for (let i = 0; i < tktNum[1].length; i++) {
                 const el = tktNum[1][i];
-                tktNum[0].push(tktNum[1][i])
-                tktNum[0].push(tktNum[2][i])
+                tktNum[0].push(tktNum[1][i].trim())
+                tktNum[0].push(tktNum[2][i].trim())
                 tktNum[0].push(`${allInfo[45].value}`)
             }
         } else {
@@ -178,7 +178,7 @@ function info() {
 
 
 
-    // console.log(tktNum)
+    console.log(tktNum)
 
     var result = document.querySelector('.result').value = `${tktNum[0].join(' / ')}`
 
