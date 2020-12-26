@@ -107,3 +107,8 @@ div:nth-child(7) {
 input.taxes {
     min-width: 10px;
 }
+
+
+.mandatory {
+    border: 2px solid red;
+}
