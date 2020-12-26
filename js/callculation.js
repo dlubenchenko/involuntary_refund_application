@@ -161,7 +161,7 @@ function partial() {
 
         allTaxes = infoAmadeus
         currencyAll = currency
-        bsrAll = document.querySelector('#bsr').value = +bsr[bsr.length - 1].toString()
+        bsrAll = document.querySelector('#bsr').value = +bsr[bsr.length - 1].toString() != 0 ? +bsr[bsr.length - 1].toString() : 1
     } else {
         const currency = info
             .split(/\n/gi)
@@ -185,11 +185,18 @@ function partial() {
                     value: Number(tax.slice(0, -2))
                 }
             })
+        const bsr = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('BSR') !== -1)
+            .toString()
+            .trim()
+            .replace(/BSR/,'')
+        console.log('bsr', +bsr)
 
         // console.log('infoSabre', infoSabre)
         allTaxes = infoSabre
-        currencyAll = currency
-        bsrAll = bsr
+        currencyAll = currency[currency.length - 1].toString().slice(0, 3)
+        bsrAll = document.querySelector('#bsr').value = +bsr != '' ? +bsr : 1
     }
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
