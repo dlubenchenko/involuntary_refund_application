@@ -1,0 +1,31 @@
+SABRE TICKET RECORD                                            
+    INV:0186127                                          PNR:CNMWYH
+    TKT:2353879296913    ISSUED:30NOV2020MUC PCC:F7ZI IATA:63320611
+    NAME:DILYANOVA ISAEVA/EMILIYA MRS                              
+    FOP:VI4446760641698496*0522/082661 C                           
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    TK   7758  U  29DEC  SAWVIE  1205P OK UT9AJOSW        EXCH
+    2    TK   7759  U  03JAN  VIESAW  120P  OK UT9AJOSW        EXCH
+    FARE   USD8.00 TAX  50.36YR  TAX  15.00TR  TAX  8.32AT         
+              TAX  18.51ZY  TAX  12.00QD  TAX  3.00M6              
+    TOTAL  EUR114.19              EQUIV FARE PD   EUR7.00          
+    COMM: .00                                                      
+    IST TK VIE4.00TK IST4.00NUC8.00END ROE1.00
+
+WTDB*3«
+
+    SABRE TICKET RECORD                                            
+    INV:0186282                                          PNR:CNMWYH
+    TKT:2353879297089    ISSUED:05DEC2020MUC PCC:F7ZI IATA:63320611
+    NAME:DILYANOVA ISAEVA/EMILIYA MRS                              
+    FOP:CASH                                                       
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    TK   7758  W  07FEB  SAWVIE  1205  OK WT1AJSW         OPEN
+    2    TK   7759  U  14FEB  VIESAW  1320  OK UT1AJOSW        OPEN
+    FARE   USD14.00 PD TAX  50.36YR  PD TAX  15.00TR               
+              PD TAX  8.32AT  PD TAX  18.51ZY  PD TAX  12.00QD     
+              PD TAX  3.00M6  TAX  30.42YR                         
+    TOTAL  EUR35.42               EQUIV FARE PD   EUREUR           
+    COMM: .00                                                      
+    IST TK VIE12.50TK IST1.00NUC13.50END ROE1.00                   
+    EXCH TKT:2353879296913/12

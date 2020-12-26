@@ -136,9 +136,6 @@ function info() {
                 tktNum[0].push(`${cpns}`)
                 tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
                 tktNum[0].push(`${allInfo[45].value}`)
-                if (tktNum[3].length > 0) {
-                    tktNum[3].push(tktNum[3][i])
-                }
             }
         }
     } else if ('refund1 refund2'.indexOf(document.itemsCheck.refundType.value) != -1) {
@@ -154,9 +151,6 @@ function info() {
                 const el = tktNum[1][i];
                 tktNum[0].push(tktNum[1][i])
                 tktNum[0].push(`${allInfo[45].value}`)
-                if (tktNum[3].length > 0) {
-                    tktNum[3].push(tktNum[3][i])
-                }
             }
         }
     } else if ('refund3 refund4'.indexOf(document.itemsCheck.refundType.value) != -1) {
@@ -174,9 +168,6 @@ function info() {
                 tktNum[0].push(tktNum[1][i])
                 tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
                 tktNum[0].push(`${allInfo[45].value}`)
-                if (tktNum[3].length > 0) {
-                    tktNum[3].push(tktNum[3][i])
-                }
             }
         }
     }
@@ -202,6 +193,8 @@ function info() {
 function clearAll() {
     const inputs = document.querySelectorAll('#ticket input')
     inputs.forEach(key => key.value = '')
+    const taxesInputs = document.querySelectorAll('.taxes')
+    taxesInputs.forEach(key => key.style.display = 'none')
 
     const textarea = document.querySelectorAll('ticket textarea')
     textarea.forEach(key => key.value = '')
@@ -215,6 +208,13 @@ function clearAll() {
     const textareaInfo = document.querySelectorAll('#ticket textarea')
     textareaInfo.forEach(key => key.value = '')
 
+    const block = document.querySelectorAll('.refund')
+    block.forEach(key => key.classList.remove('refund-active'))
+    document.getElementsByClassName('cc')[0].style.display = 'none'
+    document.getElementsByClassName('cash')[0].style.display = 'none'
+    document.querySelector('#emdNumList').value = 'Кількість EMD'
+    document.querySelector('#tktNumList').value = 'ticket0'
+    document.querySelector('#refundType').value = 'Оберіть тип повернення'
 }
 
 

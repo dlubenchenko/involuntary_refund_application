@@ -1,0 +1,82 @@
+    SABRE TICKET RECORD                                            
+    INV:0165042                                          PNR:DOFOCG
+    TKT:1576096898721-22 ISSUED:20JAN2020TLL PCC:F7ZI IATA:63320611
+    NAME:VALISTE/KADI MRS                                          
+    FOP:CASH                                                       
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    BT    195  U  16MAR  TLLCPH  1130  OK WLDKP1ZX        EXCH
+    2    QR    160  W  16MAR  CPHDOH  1535  OK WLDKP1ZX        EXCH
+    3    QR    970  W  17MAR  DOHSGN  0215  OK WLDKP1ZX        EXCH
+    4    QR    975  N  29MAR  SGNDOH  0655  OK NLR7R1RX        EXCH
+    5    QR    163  N  29MAR  DOHCPH  1535  OK NLR7R1RX        EXCH
+    6    SK   1790  L  29MAR  CPHTLL  2250  OK NLR7R1RX        EXCH
+    FARE   EUR271.00 TAX  258.00YQ  TAX  14.36YR  TAX  7.03EE      
+              TAX  25.44ZO  TAX  0.90PZ  TAX  17.26G4              
+              TAX  17.95JC  TAX  1.80C4                            
+    TOTAL  EUR613.74                                               
+    COMM: .00                                                      
+    TLL BT X/CPH QR X/DOH QR*EH*SGN124.56QR*EH*X/DOH QR X/CPH SK TL
+    L174.95NUC299.51END ROE0.903053                                
+    ENDORSEMENT/RESTRICTION:                                       
+    CHANGE FEES APPLIES/VALID ON QR  SERVICES ONLY                 
+    NON END/CHNG PENALTIES/AS PER RULE
+
+
+SABRE TICKET RECORD                                            
+    INV:0175858                                          PNR:DOFOCG
+    TKT:1573879286923-24 ISSUED:13MAR2020TLL PCC:F7ZI IATA:63320611
+    NAME:VALISTE/KADI MRS                                          
+    FOP:CASH                                                       
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    LO    792  W  23NOV  TLLWAW  0600  OK WLPLP1ZE        RFND
+    2    QR    264  W  23NOV  WAWDOH  0845  OK WLPLP1ZE        RFND
+    3    QR    972  W  23NOV  DOHSGN  2010  OK WLPLP1ZE        RFND
+    4    QR    971  N  05DEC  SGNDOH  1915  OK NLR7R1RX        RFND
+    5    QR    161  N  06DEC  DOHCPH  0135  OK NLR7R1RX        RFND
+    6    SK   1786  L  06DEC  CPHTLL  1325  OK NLR7R1RX        RFND
+    FARE   EUR314.00 PD TAX  258.00YQ  PD TAX  14.16YR             
+              PD TAX  7.03EE  PD TAX  12.72ZO  PD TAX  0.90PZ      
+              PD TAX  17.00G4  PD TAX  17.69JC  PD TAX  1.77C4     
+              PD TAX  13.47XW  TAX  0.44XW  TAX  0.19ND            
+              TAX  217.00XP                                        
+    TOTAL  EUR260.63                                               
+    COMM: .00                                                      
+    TLL LO X/WAW QR X/DOH QR*EH*SGN171.80QR*EH*X/DOH QR X/CPH SK TL
+    L174.02NUC345.82END ROE0.907931                                
+    EXCH TKT:1576096898721/1234,12                                 
+    ISSUED AT:20JAN20TLL       FEF:CASH                            
+    IATA:63320611                                                  
+    ENDORSEMENT/RESTRICTION:                                       
+    NON END/CHNG PENALTIES/AS PER RULE
+
+
+twd/tkt157-3879286923
+TKT-1573879286923-924    RCI-                     1S  LOC-NNQJOM
+ OD-TLLTLL  SI-      FCPI-0   POI-TLL  DOI-13MAR20  IOI-63320611
+   1.VALISTE/KADI MRS          ADT            ST
+ 1  TLL LO 792   W 23NOV0600 OK WLPLP1ZE      R   23NOV23NOV 30K
+ 2 XWAW QR 260   W 23NOV1545 OK WLPLP1ZE      R I 23NOV23NOV 30K
+ 3 XDOH QR 972   W 23NOV2010 OK WLPLP1ZE      R   23NOV23NOV 30K
+ 4 OSGN QR 971   N 05DEC1915 OK NLR7R1RX      R   05DEC05DEC 30K
+ 5 XDOH QR 159   N 06DEC0750 OK NLR7R1RX      R I 06DEC06DEC 30K
+ 6 XCPH SK1786   L 06DEC1325 OK NLR7R1RX      R   06DEC06DEC 30K
+    TLL
+FARE   R EUR       314.00
+TOTALTAX EUR       217.63
+TAXES    PD
+TOTAL    EUR       314.44 
+/FC TLL LO X/WAW QR X/DOH QR*EH*SGN171.80QR*EH*X/DOH QR X/CPH SK
+ TLL174.02NUC345.82END ROE0.907931
+FE NON END/CHNG PENALTIES/AS PER RULE
+FO 157-6096898721TLL20JAN20/63320611/157-6096898721-22
+FP O/CASH+CASH+/CASH
+NON-ENDORSABLE
+FOR TAX/FEE DETAILS USE TWD/TAX
+SAC- 157D83DZXJYX7
+
+twd/tax
+TOTALTAX   EUR    217.63                                                        
+TX01 EUR      0.44XW  TX02 EUR      0.19ND  TX03 EUR    217.00XP                
+PD01        258.00YQ  PD02         14.16YR  PD03          7.03EE                
+PD04         12.72ZO  PD05          0.90PZ  PD06         17.00G4                
+PD07         17.69JC  PD08          1.77C4  PD09         13.47XW

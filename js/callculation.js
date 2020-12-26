@@ -1,27 +1,8 @@
-const involDt = 'inv rf dt'.toUpperCase(),
-    doi = 'DOI - ',
-    tkt = 'TKT - ',
-    newTkt = 'NEWTKT - ',
-    newTktDoi = 'DOI - ',
-    cpns = 'CPN TO REF - ',
-    reissue = 'REISSUE-0',
-    farePaid = 'FARE PAID',
-    farePaidAdd = 'FARE PAID + ADD PAID',
-    tktPrice = 'TKT PRICE',
-    totRef = 'TOT TO REF',
-    fpCahsCc = 'FP CC + FP CASH'
-let fareUsed = 'FARE USED'
-const taxToRef = 'TAX TO REF'
 
 
 
 
-
-
-
-
-
- // parser glory
+// parser glory
 function glory() {
     const gloryAll = document.getElementById('glory').value.split(/\n/gi)
     // console.log(gloryAll)
@@ -43,7 +24,7 @@ function glory() {
 
 
 
- // parser kiwi
+// parser kiwi
 function kiwi() {
     const kiwiAll = document.getElementById('kiwi').value.split(/\n/gi)
     // console.log(kiwiAll, kiwiAll.length / 3)
@@ -53,7 +34,7 @@ function kiwi() {
 
 
     // мощь
-    for (let i = 0; i < kiwiAll.length / 15; i++){
+    for (let i = 0; i < kiwiAll.length / 15; i++) {
         kiwiToFilter[i] = kiwiAll.slice((i * 15), (i * 15) + 15);
     }
     // console.log(kiwiToFilter)
@@ -76,7 +57,7 @@ function kiwi() {
 
 
 
- // parser arystan
+// parser arystan
 function arystan() {
     const arystanAll = document.getElementById('arystan').value.split(/\n/gi)
     // console.log(arystanAll)
@@ -103,36 +84,116 @@ function arystan() {
 
 
 function partial() {
-    const findTaxes = document.querySelector('.ticket textarea').value
-        .replace(/\n/g,' ')
-        .split(' ')
+    const involDt = 'INV RF DT ',
+        doi = 'DOI - ',
+        tkt = 'TKT - ',
+        newTkt = 'NEWTKT - ',
+        emdNum = 'EMD - ',
+        reissue = 'REISSUE-0',
+        farePaid = 'FARE PAID',
+        farePaidAdd = 'FARE PAID + ADD PAID',
+        tktPrice = 'TKT PRICE',
+        totRef = 'TOT TO REF',
+        fpCahsCc = 'FP CC + FP CASH',
+        fareUsd = 'FARE USED',
+        taxToRef = 'TAX TO REF'
+
     const taxesFqq = document.querySelector('#fqq').value
-        .replace(/\n/g,' ')
+        .replace(/\n/g, ' ')
         .split(' ')
-    const bsr = +document.querySelector('#bsr').value,
-        roe = +document.querySelector('#roe').value,
-        nuc = +document.querySelector('#nuc').value,
-        fare = +document.querySelector('#eqv').value
-        // console.log(findTaxes)
-    // console.log(findTaxes)
-    // console.log(taxesFqq)
-    let currency = taxesFqq[0]
-    console.log(currency)
 
-    // фільтр всіх такс
-    let allTaxes = findTaxes
-        .filter(tax => tax != '' && tax.indexOf('TX') && tax.indexOf(currency) && tax.indexOf('TAX'))
-        .map(tax => {
-            return {
-                name: tax.slice(-2),
-                value: Number(tax.slice(0, -2))
-            }
-        })
-    // console.log(allTaxes)
 
+    let currencyAll
+    let bsrAll
+
+
+    const info = document.querySelector('#ticket textarea').value
+    let allTaxes = []
+    const roe = document.querySelector('#roe').value = +info
+        .split(/\n/gi)
+        .filter(key => key.indexOf('ROE') !== -1)
+        .join()
+        .split(' ')
+        .filter(key => key.slice(0, 3).indexOf('ROE') !== -1)
+        .toString()
+        .replace(/ROE/, '')
+    console.log('ROE', +roe)
+
+    if (info.indexOf('DOI') !== -1) {
+        const currency = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TOTAL') !== -1)
+            .join()
+            .split(' ')
+            .slice(1, 2)
+            .toString()
+        console.log('currency'.toUpperCase(), currency)
+
+        const infoAmadeus = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TX') !== -1)
+            .join()
+            .replace(/,/g, ' ')
+            .split(' ')
+            .filter(tax => tax != '' && tax.indexOf(currency) && tax.slice(0, 2).indexOf('TX'))
+            .map(tax => {
+                return {
+                    name: tax.slice(-2),
+                    value: Number(tax.slice(0, -2))
+                }
+            })
+        // console.log('infoAmadeus', infoAmadeus)
+
+        const bsr = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('BSR') !== -1)
+            .join()
+            .split(' ')
+        // console.log('bsr', bsr)
+        console.log('BSR', +bsr[bsr.length - 1].toString())
+
+        const fare = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('FARE') !== -1)
+            .join()
+            .split(' ')
+        console.log('FARE', +fare[fare.length - 1].toString())
+
+        allTaxes = infoAmadeus
+        currencyAll = currency
+        bsrAll = document.querySelector('#bsr').value = +bsr[bsr.length - 1].toString()
+    } else {
+        const currency = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TOTAL') !== -1)
+            .join()
+            .split(' ')
+            .filter(key => key != '')
+        // console.log('currency'.toUpperCase(), currency[currency.length - 1].toString().slice(0, 3))
+
+        const infoSabre = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TAX') !== -1)
+            .join()
+            .replace(/\n/g, ' ')
+            .replace(/,/g, ' ')
+            .split(' ')
+            .filter(tax => tax != '' && tax.indexOf(currency[currency.length - 1].toString().slice(0, 3)) && tax.slice(0, 3).indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currency))
+            .map(tax => {
+                return {
+                    name: tax.slice(-2),
+                    value: Number(tax.slice(0, -2))
+                }
+            })
+
+        // console.log('infoSabre', infoSabre)
+        allTaxes = infoSabre
+        currencyAll = currency
+        bsrAll = bsr
+    }
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
-        .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currency))
+        .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currencyAll))
         .map(tax => {
             return {
                 name: tax.slice(-2),
@@ -216,12 +277,21 @@ function partial() {
 
     console.log('result', result)
 
-
-    // розстановка такс окремо
+    let resultTax = []
     for (let i = 0; i < result.length; i++) {
-        document.querySelectorAll('.taxes')[i].style.display = 'grid'
-        document.querySelectorAll('.taxes')[i].value = result[i].value + ' ' + result[i].name
+        resultTax.push(result[i].value + result[i].name)
+        // console.log(result[i].value + result[i].name)
     }
+    console.log(resultTax.join(' / '))
+
+    if (filteredAllTaxesFqq.length > 0) {
+        for (let i = 0; i < result.length; i++) {
+            document.querySelectorAll('.taxes')[i].style.display = 'grid'
+            document.querySelectorAll('.taxes')[i].value = result[i].value + ' ' + result[i].name
+        }
+    }
+    // розстановка такс окремо
+
 
     // такси окремо в строку
     const taxRef = result.map((key) => {
@@ -229,23 +299,29 @@ function partial() {
     })
 
     // сумма такс
-    const sumTax = document.querySelector('#taxtoref').value = result.map((key) => {
-        return key.value
-    }).reduce((acc, key) => {
-        return acc + key
-    }, 0).toFixed(2)
-    // console.log(sumTax)
+    const sumTax = document.querySelector('#taxtoref').value = result
+        .map((key) => {
+            return key.value
+        })
+        .reduce((acc, key) => {
+            return acc + key
+        }, 0)
+        .toFixed(2)
+    console.log(sumTax)
 
 
 
     // використанний/до повернення тариф/такси / розрахунки
-    let usedFare = document.querySelector('#fareused').value = (nuc * roe * bsr).toFixed(2)
-    const fareRef = +fare - (+usedFare).toFixed(2)
-    const totalToRef = document.querySelector('#tottoref').value = (+fareRef + +sumTax).toFixed(2)
-    // console.log(usedFare)
-    // console.log(fareRef)
-    // console.log(sumTax)
-    // console.log(totalToRef)
+    let fare = +document.querySelector('#eqv').value
+    let nuc = +document.querySelector('#nuc').value
+    let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
+    let fareRef = fare - fareUsed
+    let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
+    console.log(currencyAll)
+    console.log(fareRef)
+    console.log(fareUsed)
 
+
+    let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${toRef}${currencyAll}`
 
 }

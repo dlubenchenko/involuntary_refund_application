@@ -48,7 +48,7 @@
             <option value="emd9">9</option>
         </select>
 
-        <textarea name="" class="itemsCheck result" placeholder="Результат" id=""></textarea>
+        <textarea name="" class="itemsCheck result" placeholder="Результат" id="" onchange="twd()"></textarea>
 
         <input class="but" type="button" value="ТИЦЬ" onclick="partial()">
 
@@ -58,7 +58,7 @@
 
     <form id="ticket" action="ticket1" class="tkt ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9 grid">
 
-        <div class="refund refund2 refund3 refund4 refund5 refund6 refund7 ticket textarea">
+        <div class="refund refund3 refund4 refund5 refund6 refund7 ticket textarea">
             <textarea class="ticket" name="ticket" id="ticket" placeholder="Вставити квиток" rows="5"></textarea>
         </div>
                 
@@ -240,7 +240,7 @@
             <input onchange="info()" class="info" type="text" id="cc" placeholder="FP CC">
         </div>
 
-        <div class="" id="taxes">
+        <div class="refund" id="taxes">
             <input id="tax1" type="text" class="refund taxes info" onchange="taxes()">
             <input id="tax2" type="text" class="refund taxes info" onchange="taxes()">
             <input id="tax3" type="text" class="refund taxes info" onchange="taxes()">
