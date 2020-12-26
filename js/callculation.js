@@ -97,6 +97,7 @@ function partial() {
     const taxesFqq = document.querySelector('#fqq').value
         .replace(/\n/g, ' ')
         .split(' ')
+    let twdValue
 
 
     let currencyAll
@@ -193,7 +194,7 @@ function partial() {
             .toString()
             .trim()
             .replace(/BSR/, '')
-        console.log('bsr', +bsr)
+        console.log('BSR', +bsr)
 
         console.log('infoSabre', infoSabre)
         allTaxes = infoSabre
@@ -346,92 +347,203 @@ function partial() {
 
 
 
+//after voluntary
+let infoNewTkt = document.querySelector('#newtax').value
+if (infoNewTkt.indexOf('DOI') !== -1) {
+    const currency = infoNewTkt
+        .split(/\n/gi)
+        .filter(key => key.indexOf('TOTAL') !== -1)
+        .join()
+        .split(' ')
+        .slice(1, 2)
+        .toString()
+    // console.log('currency'.toUpperCase(), currency)
+
+    const infoAmadeus = infoNewTkt
+        .split(/\n/gi)
+        .filter(key => key.indexOf('TX') !== -1)
+        .join()
+        .replace(/,/g, ' ')
+        .split(' ')
+        .filter(tax => tax != '' && tax.indexOf(currencyAll) && tax.slice(0, 2).indexOf('TX'))
+        .map(tax => {
+            return {
+                name: tax.slice(-2),
+                value: Number(tax.slice(0, -2))
+            }
+        })
+    // console.log('infoAmadeus', infoAmadeus)
+
+    const bsr = infinfoNewTkto
+        .split(/\n/gi)
+        .filter(key => key.indexOf('BSR') !== -1)
+        .join()
+        .split(' ')
+    // console.log('bsr', bsr)
+    // console.log('BSR', +bsr[bsr.length - 1].toString())
+
+    const fare = infoNewTkt
+        .split(/\n/gi)
+        .filter(key => key.indexOf('FARE') !== -1)
+        .join()
+        .split(' ')
+    // console.log('FARE', +fare[fare.length - 1].toString())
 
 
+} else {
 
+    const infoSabreVol = infoNewTkt
+        .split(/\n/gi)
+        .filter(key => key.indexOf('TAX') !== -1)
+        .join()
+        .replace(/\n/g, ' ')
+        .replace(/,/g, ' ')
+        .split(' ')
+        .filter(tax => tax != '' && tax.slice(0, 3).indexOf(currencyAll) && tax.indexOf('TAX') && tax.indexOf('FARE'))
+        // .map(tax => {
+        //     return {
+        //         name: tax.slice(-2),
+        //         value: Number(tax.slice(0, -2))
+        //     }
+        // })
+        .slice(1)
 
+    // console.log('infoSabreVol', infoSabreVol)
 
-        //after voluntary
-    let infoNewTkt = document.querySelector('#newtax').value
-    if (infoNewTkt.indexOf('DOI') !== -1) {
-        const currency = infoNewTkt
-            .split(/\n/gi)
-            .filter(key => key.indexOf('TOTAL') !== -1)
-            .join()
-            .split(' ')
-            .slice(1, 2)
-            .toString()
-        console.log('currency'.toUpperCase(), currency)
-
-        const infoAmadeus = infoNewTkt
-            .split(/\n/gi)
-            .filter(key => key.indexOf('TX') !== -1)
-            .join()
-            .replace(/,/g, ' ')
-            .split(' ')
-            .filter(tax => tax != '' && tax.indexOf(currency) && tax.slice(0, 2).indexOf('TX'))
-            .map(tax => {
-                return {
-                    name: tax.slice(-2),
-                    value: Number(tax.slice(0, -2))
-                }
-            })
-        console.log('infoAmadeus', infoAmadeus)
-
-        const bsr = infinfoNewTkto
-            .split(/\n/gi)
-            .filter(key => key.indexOf('BSR') !== -1)
-            .join()
-            .split(' ')
-        console.log('bsr', bsr)
-        console.log('BSR', +bsr[bsr.length - 1].toString())
-
-        const fare = infoNewTkt
-            .split(/\n/gi)
-            .filter(key => key.indexOf('FARE') !== -1)
-            .join()
-            .split(' ')
-        console.log('FARE', +fare[fare.length - 1].toString())
-
-
-    } else {
-        const currency = infoNewTkt
-            .split(/\n/gi)
-            .filter(key => key.indexOf('TOTAL') !== -1)
-            .join()
-            .split(' ')
-            .filter(key => key != '')
-        // console.log('currency'.toUpperCase(), currency[currency.length - 1].toString().slice(0, 3))
-
-        const infoSabre = infoNewTkt
-            .split(/\n/gi)
-            .filter(key => key.indexOf('TAX') !== -1)
-            .join()
-            .replace(/\n/g, ' ')
-            .replace(/,/g, ' ')
-            .split(' ')
-            .filter(tax => tax != '' && tax.indexOf(currency[currency.length - 1].toString().slice(0, 3)) && tax.slice(0, 3).indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currency))
-            .map(tax => {
-                return {
-                    name: tax.slice(-2),
-                    value: Number(tax.slice(0, -2))
-                }
-            })
-        const bsr = infoNewTkt
-            .split(/\n/gi)
-            .filter(key => key.indexOf('BSR') !== -1)
-            .toString()
-            .trim()
-            .replace(/BSR/, '')
-        console.log('bsr', +bsr)
-
-        console.log('infoSabre', infoSabre)
-
+    let temp = []
+    for (let i = 0; i < infoSabreVol.length; i++) {
+        if (infoSabreVol[i] === 'PD') {
+            temp.push(infoSabreVol[i] + infoSabreVol[i + 1])
+            i++
+        } else {
+            temp.push(infoSabreVol[i])
+        }
     }
+    // console.log(temp)
+    const taxVol = temp
+        .map(tax => {
+            if (tax.slice(0, 2) === 'PD') {
+                return {
+                    paid: 'YES',
+                    name: tax.slice(-2),
+                    value: +tax.slice(2, -2)
+                }
+            } else {
+                return {
+                    paid: 'NOT',
+                    name: tax.slice(-2),
+                    value: +tax.slice(0, -2)
+                }
+            }
+        })
+
+
+    // console.log(infoSabreVol)
+    // console.log(temp)
+    // console.log('Такси переписаного', tempTaxVol)
+
+
+const filtertax = (taxValue) => {
+    i = 0
+    j = 1
+    while (i < taxValue.length) {
+        while (j < taxValue.length) {
+            if (taxValue[i].name === taxValue[j].name) {
+                taxValue[i].value += taxValue[j].value
+                taxValue[j].name = ''
+                taxValue[j].value = ''
+            }
+            j++
+        }
+        i++
+        j = i + 1
+    }
+}
+
+
+const filtertax1 = (taxValue) => {
+    i = 0
+    j = 1
+    while (i < taxValue.length) {
+        while (j < taxValue.length) {
+            if (taxValue[i].name === taxValue[j].name && taxValue[i].paid === taxValue[j].paid) {
+                taxValue[i].value += taxValue[j].value
+                taxValue[j].name = ''
+                taxValue[j].value = ''
+            }
+            j++
+        }
+        i++
+        j = i + 1
+    }
+}
+
+filtertax1(taxVol)
+filtertax(allTaxes)
+
+
+const filteredtaxVol = taxVol
+.filter(tax => tax.name != '')
+.map(tax => {
+    if (tax.paid === 'YES') {
+        return {
+            paid: 'YES',
+            name: tax.name,
+            value: tax.value
+        }  
+    } else {
+        return {
+            paid: 'NOT',
+            name: tax.name,
+            value: tax.value
+        }
+    }
+})
 
 
 
 
+
+const filteredTax = allTaxes
+.filter(tax => tax.name != '')
+.map(tax => {
+    return {
+        name: tax.name,
+        value: Number(tax.value.toFixed(2))
+    }
+})
+console.log('Такси оригінального', filteredTax)
+console.log('Такси переписаного', filteredtaxVol)
+
+
+let paidTax = []
+for (let i = 0; i < filteredTax.length; i++) {
+    for (let j = 0; j < filteredtaxVol.length; j++) {
+        if (filteredTax[i].name === filteredtaxVol[j].name) {
+            if (filteredtaxVol[j].paid === 'YES') {
+                if (filteredTax[i].value >= filteredtaxVol[j].value) {
+                    paidTax[paidTax.length] = {name: filteredTax[i].name, value: filteredTax[i].value}
+
+                } else {
+                    paidTax[paidTax.length] = {name: filteredtaxVol[j].name, value: filteredtaxVol[j].value}
+                }
+            } 
+            
+        } 
+        
+    }
+    
+}
+
+for (let i = 0; i < filteredtaxVol.length; i++) {
+    if (filteredtaxVol[i].paid != 'YES' && filteredtaxVol[i].name != 'СP' && filteredtaxVol[i].name != 'XP' && filteredtaxVol[i].name != 'OB' && filteredtaxVol[i].name != 'DU' && filteredtaxVol[i].name != 'SH' && filteredtaxVol[i].name != 'OD') {
+        paidTax[paidTax.length] = {addpaid: 'YES', name: filteredtaxVol[i].name, value: filteredtaxVol[i].value}
+    }
+    
+}
+
+console.log('Оригынальні такси + доплати', paidTax)
+}
 
 
 
