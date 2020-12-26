@@ -1,7 +1,3 @@
-
-
-
-
 // parser glory
 function glory() {
     const gloryAll = document.getElementById('glory').value.split(/\n/gi)
@@ -169,7 +165,11 @@ function partial() {
             .join()
             .split(' ')
             .filter(key => key != '')
-        // console.log('currency'.toUpperCase(), currency[currency.length - 1].toString().slice(0, 3))
+            .slice(1, 2)
+            .toString()
+            .slice(0, 3)
+            .toString()
+        console.log('currency'.toUpperCase(), currency)
 
         const infoSabre = info
             .split(/\n/gi)
@@ -178,22 +178,24 @@ function partial() {
             .replace(/\n/g, ' ')
             .replace(/,/g, ' ')
             .split(' ')
-            .filter(tax => tax != '' && tax.indexOf(currency[currency.length - 1].toString().slice(0, 3)) && tax.slice(0, 3).indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currency))
+            .filter(tax => tax != '' && tax.slice(0, 3).indexOf(currency) && tax.indexOf('TAX') && tax.indexOf('FARE'))
             .map(tax => {
                 return {
                     name: tax.slice(-2),
                     value: Number(tax.slice(0, -2))
                 }
             })
+            .slice(1)
+
         const bsr = info
             .split(/\n/gi)
             .filter(key => key.indexOf('BSR') !== -1)
             .toString()
             .trim()
-            .replace(/BSR/,'')
+            .replace(/BSR/, '')
         console.log('bsr', +bsr)
 
-        // console.log('infoSabre', infoSabre)
+        console.log('infoSabre', infoSabre)
         allTaxes = infoSabre
         currencyAll = currency[currency.length - 1].toString().slice(0, 3)
         bsrAll = document.querySelector('#bsr').value = +bsr != '' ? +bsr : 1
@@ -314,23 +316,138 @@ function partial() {
             return acc + key
         }, 0)
         .toFixed(2)
-    console.log(sumTax)
+    console.log('Total tax to ref', sumTax)
 
 
 
-    // використанний/до повернення тариф/такси / розрахунки
-    let fare = +document.querySelector('#eqv').value
+
+
+
+
+
+
+
+        // використанний/до повернення тариф/такси / розрахунки
+        let fare = +document.querySelector('#eqv').value
     let nuc = +document.querySelector('#nuc').value
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
     let fareRef = fare - fareUsed
     let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
     let fp = document.querySelector('#fp').value
     let fpChoice = document.querySelector('#fp').value != 'FP CC + FP CASH' ? fp + ' ' + toRef : 'FP CC ' + (toRef - +document.querySelector('#cash').value) + currencyAll + ' ' + 'FP CASH ' + document.querySelector('#cash').value + currencyAll
-    console.log(currencyAll)
-    console.log(fareRef)
-    console.log(fareUsed)
+    // console.log(currencyAll)
+    console.log('fare to Ref', fareRef)
+    console.log('Used fare', fareUsed)
 
 
     let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
+
+
+
+
+
+
+
+
+
+
+        //after voluntary
+    let infoNewTkt = document.querySelector('#newtax').value
+    if (infoNewTkt.indexOf('DOI') !== -1) {
+        const currency = infoNewTkt
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TOTAL') !== -1)
+            .join()
+            .split(' ')
+            .slice(1, 2)
+            .toString()
+        console.log('currency'.toUpperCase(), currency)
+
+        const infoAmadeus = infoNewTkt
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TX') !== -1)
+            .join()
+            .replace(/,/g, ' ')
+            .split(' ')
+            .filter(tax => tax != '' && tax.indexOf(currency) && tax.slice(0, 2).indexOf('TX'))
+            .map(tax => {
+                return {
+                    name: tax.slice(-2),
+                    value: Number(tax.slice(0, -2))
+                }
+            })
+        console.log('infoAmadeus', infoAmadeus)
+
+        const bsr = infinfoNewTkto
+            .split(/\n/gi)
+            .filter(key => key.indexOf('BSR') !== -1)
+            .join()
+            .split(' ')
+        console.log('bsr', bsr)
+        console.log('BSR', +bsr[bsr.length - 1].toString())
+
+        const fare = infoNewTkt
+            .split(/\n/gi)
+            .filter(key => key.indexOf('FARE') !== -1)
+            .join()
+            .split(' ')
+        console.log('FARE', +fare[fare.length - 1].toString())
+
+
+    } else {
+        const currency = infoNewTkt
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TOTAL') !== -1)
+            .join()
+            .split(' ')
+            .filter(key => key != '')
+        // console.log('currency'.toUpperCase(), currency[currency.length - 1].toString().slice(0, 3))
+
+        const infoSabre = infoNewTkt
+            .split(/\n/gi)
+            .filter(key => key.indexOf('TAX') !== -1)
+            .join()
+            .replace(/\n/g, ' ')
+            .replace(/,/g, ' ')
+            .split(' ')
+            .filter(tax => tax != '' && tax.indexOf(currency[currency.length - 1].toString().slice(0, 3)) && tax.slice(0, 3).indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currency))
+            .map(tax => {
+                return {
+                    name: tax.slice(-2),
+                    value: Number(tax.slice(0, -2))
+                }
+            })
+        const bsr = infoNewTkt
+            .split(/\n/gi)
+            .filter(key => key.indexOf('BSR') !== -1)
+            .toString()
+            .trim()
+            .replace(/BSR/, '')
+        console.log('bsr', +bsr)
+
+        console.log('infoSabre', infoSabre)
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -178,7 +178,7 @@ function info() {
 
 
 
-    console.log(tktNum)
+    // console.log(tktNum)
 
     var result = document.querySelector('.result').value = `${tktNum[0].join(' / ')}`
 
@@ -223,37 +223,3 @@ function clearAll() {
 
 
 
-
-
-
-
-
-
-
-
-// function twdCallculation() {
-//     const tempTwdTax = document.querySelector('textarea#ticket').value
-//     const twdTax = tempTwdTax
-//         .replace(/\n/g,' ')
-//         .replace(/:/g,' ')
-//         .replace(/-/g,' ')
-//         .replace(/BSR/g,'BSR ')
-//         .replace(/ROE/g,'ROE ')
-//         .split(' ')
-//         .filter(tax => tax != '')
-//         .forEach((key, i) => {
-//             if (key === 'BSR') {
-//                 i++
-//                 console.log()
-//             } 
-//             if (key === 'ROE') {
-//                 ++i
-//                 console.log(key)
-//             }
-//         })
-
-//         console.log(twdTax)
-
-
-
-// }
