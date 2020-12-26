@@ -1,0 +1,33 @@
+ELECTRONIC TICKET RECORD                          CRS CODE:1536
+    INV:0608495           CUST:                          PNR:IKHPNC
+    TKT:0473742778406     ISSUED:16SEP20   PCC:1ABH   IATA:92229535
+    NAME:BUCKLEY/BRITTANIE MRS                                     
+    NAME REF:PRS234561                                             
+    FORM OF PAYMENT                        FCI: 0                  
+    1    CASH                                                      
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    TP   202   E  17JUN  EWRLIS 1800   OK EUSDSI0E        OPEN
+                                    NVB:17JUN   NVA:17JUN   BAG:NIL
+    2    TP   674   E  18JUN  LISAMS 0905   OK EUSDSI0E        OPEN
+                                    NVB:18JUN   NVA:18JUN   BAG:NIL
+    3    TP   673   O  24JUN  AMSLIS 1355   OK OUSDSI0E        OPEN
+                                    NVB:24JUN   NVA:24JUN   BAG:NIL
+    4    TP   207   O  24JUN  LISEWR 1930   OK OUSDSI0E        OPEN
+                                    NVB:24JUN   NVA:24JUN   BAG:NIL
+    FARE       USD65.00                                            
+    TOTAL       RUB22480     EQUIVALENT FARE PAID           RUB4875¥
+
+MD«
+
+                                                                   ¥
+    FARE CALCULATION                                               
+    NYC TP X/LIS TP AMS60.00TP X/LIS TP NYC5.00NUC65.00END ROE1.00 
+    XFEWR4.5                                                       
+    ASSOCIATED/CONNECTED EMD: 0474200964266                        
+    TAX BREAKDOWN                                                  
+    TAX      9750YQ TAX       442YC TAX       525XY TAX       297XA
+    TAX       420AY TAX      1035PT TAX      2215YP TAX      1133CJ
+    TAX      1450RN TAX       338XF                                
+    ENDORSEMENT                                                    
+    BSR75                                                          
+    FARE RESTR APPLY/NON REF
