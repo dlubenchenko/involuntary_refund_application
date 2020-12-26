@@ -279,7 +279,7 @@ function partial() {
 
     let resultTax = []
     for (let i = 0; i < result.length; i++) {
-        resultTax.push(result[i].value + result[i].name)
+        resultTax.push(result[i].value.toFixed(2) + result[i].name)
         // console.log(result[i].value + result[i].name)
     }
     console.log(resultTax.join(' / '))
@@ -317,11 +317,13 @@ function partial() {
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
     let fareRef = fare - fareUsed
     let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
+    let fp = document.querySelector('#fp').value
+    let fpChoice = document.querySelector('#fp').value != 'FP CC + FP CASH' ? fp + ' ' + toRef : 'FP CC ' + (toRef - +document.querySelector('#cash').value) + currencyAll + ' ' + 'FP CASH ' + document.querySelector('#cash').value + currencyAll
     console.log(currencyAll)
     console.log(fareRef)
     console.log(fareUsed)
 
 
-    let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${toRef}${currencyAll}`
+    let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
 
 }

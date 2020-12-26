@@ -127,7 +127,6 @@ function info() {
                 tktNum[0].push(tktNum[2][i])
                 tktNum[0].push(`${cpns}`)
                 tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
-                tktNum[0].push(`${allInfo[45].value}`)
             }
         } else {
             for (let i = 0; i < tktNum[1].length; i++) {
@@ -135,7 +134,6 @@ function info() {
                 tktNum[0].push(tktNum[1][i])
                 tktNum[0].push(`${cpns}`)
                 tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
-                tktNum[0].push(`${allInfo[45].value}`)
             }
         }
     } else if ('refund1 refund2'.indexOf(document.itemsCheck.refundType.value) != -1) {
@@ -160,14 +158,12 @@ function info() {
                 tktNum[0].push(tktNum[1][i])
                 tktNum[0].push(tktNum[2][i])
                 tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
-                tktNum[0].push(`${allInfo[45].value}`)
             }
         } else {
             for (let i = 0; i < tktNum[1].length; i++) {
                 const el = tktNum[1][i];
                 tktNum[0].push(tktNum[1][i])
                 tktNum[0].push(`Розрахунки ${i + 1} - квитка`)
-                tktNum[0].push(`${allInfo[45].value}`)
             }
         }
     }
