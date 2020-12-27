@@ -106,7 +106,7 @@ function partial() {
 
     const info = document.querySelector('#ticket textarea').value
     let allTaxes = []
-    const roe = document.querySelector('#roe').value = +info
+    const roeTemp = +info
         .split(/\n/gi)
         .filter(key => key.indexOf('ROE') !== -1)
         .join()
@@ -114,7 +114,9 @@ function partial() {
         .filter(key => key.slice(0, 3).indexOf('ROE') !== -1)
         .toString()
         .replace(/ROE/, '')
-    console.log('ROE', +roe)
+    console.log('ROE', +roeTemp)
+
+    let roe = document.querySelector('#roe').value = roeTemp === 0 ? 1 : roeTemp
 
     if (info.indexOf('DOI') !== -1) {
         const currency = info
@@ -192,14 +194,15 @@ function partial() {
             .replace(/\n/g, ' ')
             .replace(/,/g, ' ')
             .split(' ')
-            .filter(tax => tax != '' && tax.slice(0, 3).indexOf(currency) && tax.indexOf('TAX') && tax.indexOf('FARE'))
+            .slice(8)
+            .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE'))
             .map(tax => {
                 return {
                     name: tax.slice(-2),
                     value: Number(tax.slice(0, -2))
                 }
             })
-            .slice(1)
+
 
         const bsr = info
             .split(/\n/gi)
@@ -223,7 +226,7 @@ function partial() {
 
         totalAll = +total
 
-        // console.log('infoSabre', infoSabre)
+        console.log('infoSabre', infoSabre)
         allTaxes = infoSabre
         currencyAll = currency
         bsrAll = document.querySelector('#bsr').value = +bsr != '' ? +bsr : 1
@@ -440,9 +443,9 @@ function partial() {
         // console.log('infoSabreVol', infoSabreVol)
 
         let temp = []
-        for (let i = 0; i < infoSabreVol.length; i++) {
+        for (let i = 1; i < infoSabreVol.length; i++) {
             if (infoSabreVol[i] === 'PD') {
-                temp.push(infoSabreVol[i] + infoSabreVol[i + 1])
+                temp.push(infoSabreVol[i] + infoSabreVol[i - 1])
                 i++
             } else {
                 temp.push(infoSabreVol[i])
@@ -580,8 +583,19 @@ function partial() {
             }
 
         }
-
+        let resultPart = []
         console.log('Оригінальні такси + доплати по таксам', paidTax)
+            paidTax
+        .forEach(key => {
+            if (key.addpaid === 'YES') {
+                resultPart.push('Добір - ' + key.value + key.name)
+            } else {
+                resultPart.push('Оригінальна - ' + key.value + key.name)
+            }
+            
+        })
+            document.querySelector('#callculation1').value = resultPart.join(' / ')
+            console.log(resultPart)
     }
 
 
