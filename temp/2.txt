@@ -15,7 +15,7 @@ ELECTRONIC TICKET RECORD                          CRS CODE:1536
     4    TP   207   O  24JUN  LISEWR 1930   OK OUSDSI0E        OPEN
                                     NVB:24JUN   NVA:24JUN   BAG:NIL
     FARE       USD65.00                                            
-    TOTAL       RUB22480     EQUIVALENT FARE PAID           RUB4875¥
+    TOTAL       RUB22480     EQUIVALENT FARE PAID           
 
 MD«
 
