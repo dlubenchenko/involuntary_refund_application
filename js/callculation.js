@@ -585,17 +585,17 @@ function partial() {
         }
         let resultPart = []
         console.log('Оригінальні такси + доплати по таксам', paidTax)
-            paidTax
-        .forEach(key => {
-            if (key.addpaid === 'YES') {
-                resultPart.push('Добір - ' + key.value + key.name)
-            } else {
-                resultPart.push('Оригінальна - ' + key.value + key.name)
-            }
-            
-        })
-            document.querySelector('#callculation1').value = resultPart.join(' / ')
-            console.log(resultPart)
+        paidTax
+            .forEach(key => {
+                if (key.addpaid === 'YES') {
+                    resultPart.push('Добір - ' + key.value + key.name)
+                } else {
+                    resultPart.push('Оригінальна - ' + key.value + key.name)
+                }
+
+            })
+        document.querySelector('#callculation1').value = resultPart.join(' / ')
+        console.log(resultPart)
     }
 
 

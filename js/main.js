@@ -174,7 +174,7 @@ function info() {
             tktNum[0].push(`${allInfo[45].value}`)
         }
     }
-    
+
 
 
 
@@ -212,14 +212,3 @@ function clearAll() {
     document.querySelector('#tktNumList').value = 'ticket0'
     document.querySelector('#refundType').value = 'Оберіть тип повернення'
 }
-
-
-
-
-
-
-
-
-
-
-
