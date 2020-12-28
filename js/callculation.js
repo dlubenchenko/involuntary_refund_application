@@ -233,15 +233,15 @@ function partial() {
     }
 
     const sumTaxOrg = allTaxes
-    .map((key) => {
-        return key.value
-    })
-    .reduce((acc, key) => {
-        return acc + key
-    }, 0)
-    .toFixed(2)
+        .map((key) => {
+            return key.value
+        })
+        .reduce((acc, key) => {
+            return acc + key
+        }, 0)
+        .toFixed(2)
 
-console.log('Тотал такс', +sumTaxOrg)
+    console.log('Тотал такс', +sumTaxOrg)
 
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
@@ -602,16 +602,30 @@ console.log('Тотал такс', +sumTaxOrg)
             .forEach(key => {
                 if (key.addpaid === 'YES' && key.name !== 'СP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD') {
                     resultPart.push('Доплачена - ' + key.value + key.name)
-                } else if (key.name === 'СP' || key.name === 'XP' || key.name === 'OB'  || key.name === 'DU' || key.name === 'SH' || key.name === 'OD') {
+                } else if (key.name === 'СP' || key.name === 'XP' || key.name === 'OB' || key.name === 'DU' || key.name === 'SH' || key.name === 'OD') {
                     resultPart.push('Штраф - ' + key.value + key.name)
                 } else {
                     resultPart.push(key.value + key.name)
-                } 
+                }
 
             })
+
+        let paidTaxSum = paidTax
+            .filter(key => key.name !== 'СP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD')
+            .map((key) => {
+                return key.value
+            })
+            .reduce((acc, key) => {
+                return acc + key
+            }, 0)
+            .toFixed(2)
+        console.log('Тотал такс до повернення з доплатами', +paidTaxSum)
+
         // document.querySelector('#callculation1').value = resultPart.join(' / ')
-        let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')}`
+        let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')} / TOT TAX ${paidTaxSum}${currencyAll}`
         console.log(resultPart)
+
+
     }
 
 
