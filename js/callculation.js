@@ -95,8 +95,8 @@ function partial() {
         taxToRef = 'TAX TO REF'
 
     const taxesFqq = document.querySelector('#fqq').value
-        .replace(/\n/g, ' ')
-        .split(' ')
+        .split(/\n/g)
+
     let twdValue
 
     let totalAll
@@ -261,13 +261,18 @@ function partial() {
 
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
-        .filter(tax => tax != '' && tax.slice(-2).indexOf('XT') && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currencyAll) && tax.includes('.') && tax.includes('-'))
+        .filter(tax => tax != '' && !tax.indexOf(currencyAll))
+        .join()
+        .replace(/,/g, ' ')
+        .split(' ')
+        .filter(tax => tax != '' && tax.indexOf(currencyAll) && !tax.slice(-3, -2).indexOf('-') && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.slice(-2).indexOf('XT'))
         .map(tax => {
             return {
                 name: tax.slice(-2),
                 value: Number(tax.slice(0, -3))
             }
         })
+        console.log(allTaxesFqq)
     // пошук одинакових
     const filtertax = (taxValue) => {
         i = 0
