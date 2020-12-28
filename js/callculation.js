@@ -601,9 +601,9 @@ console.log('Тотал такс', +sumTaxOrg)
         paidTax
             .forEach(key => {
                 if (key.addpaid === 'YES') {
-                    resultPart.push('Add - ' + key.value + key.name)
+                    resultPart.push('Доплачена - ' + key.value + key.name)
                 } else {
-                    resultPart.push('Org - ' + key.value + key.name)
+                    resultPart.push(key.value + key.name)
                 }
 
             })
