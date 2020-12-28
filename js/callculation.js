@@ -607,7 +607,7 @@ console.log('Тотал такс до поверненн', +sumTaxOrg)
 
             })
         document.querySelector('#callculation1').value = resultPart.join(' / ')
-        console.log(resultPart)
+        // console.log(resultPart)
     }
 
 
