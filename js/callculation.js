@@ -608,7 +608,7 @@ console.log('Тотал такс', +sumTaxOrg)
 
             })
         // document.querySelector('#callculation1').value = resultPart.join(' / ')
-        let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')} / TO REF ${fpChoice}`
+        let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')}`
         // console.log(resultPart)
     }
 
