@@ -1,37 +1,40 @@
 SABRE TICKET RECORD                                            
-    INV:0545821                                          PNR:BUQOST
-    TKT:2355523031831    ISSUED:30JAN2020IEV PCC:5K1G IATA:72323834
-    NAME:BIRKNER/KARL GREGOR MR                                    
-    NAME REF:PC1T1M4MR5                    TOUR ID:IT09494         
-    FOP:CASH                                                       
-    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
-    1    TK   1722  Q  30JUN  TXLIST  1115A OK QHN2PX          EXCH
-    2    TK    612  Q  30JUN  ISTKGL  625P  OK QHN2PX          EXCH
-    3    TK    606  Q  04AUG  KGLIST  1235A OK QHN2PX          EXCH
-    4    TK   1725  Q  04AUG  ISTTXL  1155A OK QHN2PX          EXCH
-    FARE   EUR275.00 TAX  7796YR  TAX  212DE  TAX  411RA           
-              TAX  1620OY  TAX  274TR  TAX  991RW                  
-              TAX  248C8                                           
-    TOTAL  UAH19047               EQUIV FARE PD   UAH7495          
-    NET FARE INDICATOR  NS                                         
-                                                                   ¥
+INV:0545821                                          PNR:BUQOST
+TKT:2355523031831    ISSUED:30JAN2020IEV PCC:5K1G IATA:72323834
+NAME:BIRKNER/KARL GREGOR MR                                    
+NAME REF:PC1T1M4MR5                    TOUR ID:IT09494         
+FOP:CASH                                                       
+CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+1    TK   1722  Q  30JUN  TXLIST  1115A OK QHN2PX          EXCH
+2    TK    612  Q  30JUN  ISTKGL  625P  OK QHN2PX          EXCH
+3    TK    606  Q  04AUG  KGLIST  1235A OK QHN2PX          EXCH
+4    TK   1725  Q  04AUG  ISTTXL  1155A OK QHN2PX          EXCH
+                                                               
+FARE   EUR275.00 TAX  7796YR  TAX  212DE  TAX  411RA           
+          TAX  1620OY  TAX  274TR  TAX  991RW                  
+          TAX  248C8                                           
+TOTAL  UAH19047               EQUIV FARE PD   UAH7495          
+                                                               
+NET FARE INDICATOR  NS
 
-WTDB*4«
 
-    SABRE TICKET RECORD                                            
-    INV:0000113                                          PNR:BUQOST
-    TKT:2353885464159    ISSUED:22DEC2020IEV PCC:5K1G IATA:72323834
-    NAME:BIRKNER/KARL GREGOR MR                                    
-    NAME REF:PC1T1M4MR5                    TOUR ID:IT09494         
-    FOP:CASH                                                       
-    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
-    1    TK   1722  Q  26JUN  BERIST  1110  OK QHN2PX          EXCH
-    2    TK    612  Q  26JUN  ISTKGL  1840  OK QHN2PX          EXCH
-    3    TK    612  E  06AUG  KGLIST  0100  OK EHN2PX          EXCH
-    4    TK   1725  E  06AUG  ISTBER  1155  OK EHN2PX          EXCH
-    FARE   EUR319.00 PD TAX  7796YR  PD TAX  212DE                 
-              PD TAX  342RA  PD TAX  1620OY  PD TAX  274TR         
-              PD TAX  991RW  PD TAX  248C8  TAX  2006YR            
-              TAX  92DE  TAX  393OY  TAX  70TR  TAX  130RW         
-              TAX  32C8  TAX  1713CP                               
-    TOTAL  UAH5943                EQUIV FARE PD   UAHUAH
+
+
+SABRE TICKET RECORD                                            
+INV:0000113                                          PNR:BUQOST
+TKT:2353885464159    ISSUED:22DEC2020IEV PCC:5K1G IATA:72323834
+NAME:BIRKNER/KARL GREGOR MR                                    
+NAME REF:PC1T1M4MR5                    TOUR ID:IT09494         
+FOP:CASH                                                       
+CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+1    TK   1722  Q  26JUN  BERIST  1110  OK QHN2PX          EXCH
+2    TK    612  Q  26JUN  ISTKGL  1840  OK QHN2PX          EXCH
+3    TK    612  E  06AUG  KGLIST  0100  OK EHN2PX          EXCH
+4    TK   1725  E  06AUG  ISTBER  1155  OK EHN2PX          EXCH
+                                                               
+FARE   EUR319.00 PD TAX  7796YR  PD TAX  212DE                 
+          PD TAX  342RA  PD TAX  1620OY  PD TAX  274TR         
+          PD TAX  991RW  PD TAX  248C8  TAX  2006YR            
+          TAX  92DE  TAX  393OY  TAX  70TR  TAX  130RW         
+          TAX  32C8  TAX  1713CP                               
+TOTAL  UAH5943                EQUIV FARE PD   UAHUAH

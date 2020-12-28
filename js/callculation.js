@@ -209,7 +209,7 @@ function partial() {
             .replace(/,/g, ' ')
             .replace(/¥/g, ' ')
             .split(' ')
-            .slice(8)
+            // .slice(8)
             .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currencyAirline))
             .map(tax => {
                 return {
