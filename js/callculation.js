@@ -231,6 +231,18 @@ function partial() {
         currencyAll = currency
         bsrAll = document.querySelector('#bsr').value = +bsr != '' ? +bsr : 1
     }
+
+    const sumTaxOrg = allTaxes
+    .map((key) => {
+        return key.value
+    })
+    .reduce((acc, key) => {
+        return acc + key
+    }, 0)
+    .toFixed(2)
+
+console.log('Тотал такс до поверненн', +sumTaxOrg)
+
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
         .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currencyAll))
@@ -359,8 +371,8 @@ function partial() {
 
 
     // використанний/до повернення тариф/такси / розрахунки
-    let fare = document.querySelector('#eqv').value = totalAll - +sumTax
-    let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTax
+    let fare = document.querySelector('#eqv').value = totalAll - +sumTaxOrg
+    let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTaxOrg
     let tktPrice = document.querySelector('#tktprice').value = totalAll
     let nuc = +document.querySelector('#nuc').value
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
