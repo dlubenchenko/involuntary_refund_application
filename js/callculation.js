@@ -618,7 +618,7 @@ function partial() {
         paidTax
             .forEach(key => {
                 if (key.addpaid === 'YES' && key.name !== 'CP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD' && key.name !== 'OA') {
-                    resultPart.push('Доплачена - ' + key.value + key.name)
+                    resultPart.push('Доплата - ' + key.value + key.name)
                 } else if (key.name === 'CP' || key.name === 'XP' || key.name === 'OB' || key.name === 'DU' || key.name === 'SH' || key.name === 'OD' || key.name === 'OA') {
                     resultPart.push('Штраф - ' + key.value + key.name)
                 } else {
