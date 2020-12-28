@@ -177,7 +177,7 @@ function partial() {
     } else {
         const currency = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TAX') !== -1)
+            .filter(key => key.indexOf('TOTAL') !== -1)
             .join()
             .split(' ')
             .filter(key => key != '')
@@ -445,14 +445,14 @@ function partial() {
             .replace(/\n/g, ' ')
             .replace(/,/g, ' ')
             .split(' ')
-            .filter(tax => tax != '' && tax.slice(0, 3).indexOf(currencyAll) && tax.indexOf('TAX') && tax.indexOf('FARE'))
+            .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE'))
             // .map(tax => {
             //     return {
             //         name: tax.slice(-2),
             //         value: Number(tax.slice(0, -2))
             //     }
             // })
-            // .slice(1)
+            .slice(1)
 
         console.log('infoSabreVol', infoSabreVol)
 

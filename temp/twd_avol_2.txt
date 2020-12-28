@@ -1,34 +1,44 @@
-SABRE TICKET RECORD                                            
-    INV:0098070                                          PNR:HOONVI
-    TKT:6552409294562    ISSUED:28DEC2020ALA PCC:IN9I IATA:65321723
-    NAME:SAIP/AKNUR MRS                                            
+WTDB*4«
+
+    SABRE TICKET RECORD                                            
+    INV:0137236                                          PNR:IDLCXR
+    TKT:2354844837226    ISSUED:28DEC2020ALA PCC:Y3GI IATA:65321723
+    NAME:YESKOVA/ANASTASIIA MRS                                    
+    NAME REF:PFK724778                                             
     FOP:CASH                                                       
     CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
-    1    DV    716  A  05JAN  NQZCIT  1510  OK ASO             OPEN
-    2    DV    701  A  31JAN  CITNQZ  0630  OK ASO             OPEN
-    FARE   KZT10000 PD TAX  4100YR  PD TAX  1750UJ                 
-              TAX  3000CP                                          
-    TOTAL  KZT3000                                                 
-    NQZ DV CIT5000DV NQZ5000KZT10000END                            
-    EXCH TKT:6552409279906/12                                      
-    ISSUED AT:25OCT20ALA       FEF:CASH                            
+    1    TK    460  L  04JAN  KBPIST  2035  OK LY2XPBO         OPEN
+    FARE   USD139.00 PD TAX  20561YR  PD TAX  1679UA               
+              PD TAX  840UD  PD TAX  5455YK                        
+                                  EQUIV FARE PD   KZTKZT           
+    IEV TK IST139.00NUC139.00END ROE1.00                           
+    EXCH TKT:2354844805985/1                                       
+    ISSUED AT:30NOV20ALA       FEF:CASH                            
     IATA:65321723                                                  
                                                                    ¥
 
-WTDB*2«
+WETR*2«
 
-    SABRE TICKET RECORD                                            
-    INV:0088389                                          PNR:HOONVI
-    TKT:6552409279906    ISSUED:25OCT2020ALA PCC:IN9I IATA:65321723
-    NAME:SAIP/AKNUR MRS                                            
-    FOP:CASH                                                       
+    ELECTRONIC TICKET RECORD                          CRS CODE:    
+    INV:0132364           CUST:                          PNR:IDLCXR
+    TKT:2354844805985     ISSUED:30NOV20   PCC:Y3GI   IATA:65321723
+    NAME:YESKOVA/ANASTASIIAMRS                                     
+    NAME REF:PFK724778                                             
+    FORM OF PAYMENT                        FCI: 0                  
+    1    CASH                                                      
     CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
-    1    DV    716  A  05JAN  NQZCIT   310P OK ASO             EXCH
-    2    DV    701  A  15JAN  CITNQZ   630A OK ASO             EXCH
-    FARE   KZT10000 TAX  4100YR  TAX  1750UJ                       
-    TOTAL  KZT15850                                                
-    COMM: 800                                                      
-    NQZ DV CIT5000DV NQZ5000KZT10000END                            
-    ENDORSEMENT/RESTRICTION:                                       
-    P044839791                                                     
-    NONREF/HEBO3BPATEH/DV ONLY/FREE BAGGAGE  NOT ALLOWED
+    1    TK   0458  L  04JAN  KBPIST 1040   OK LY2XPBO         EXCH
+                                    NVB:04JAN   NVA:04JAN   BAG:20K
+    FARE      USD139.00                                            
+    TOTAL       KZT87731     EQUIVALENT FARE PAID          KZT58910
+    FARE CALCULATION                                               
+    IEV TK IST139.00NUC139.00END ROE1.00                           
+    SETTLEMENT AUTHORIZATION:  2352FE565D851                       
+                                                                   ¥
+
+MD«
+
+    TAX BREAKDOWN                                                  ¥
+    TAX     20767YR TAX      1696UA TAX       848UD TAX      5510YK
+    ENDORSEMENT                                                    
+    BSR423.81
