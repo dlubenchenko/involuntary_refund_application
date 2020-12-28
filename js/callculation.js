@@ -177,7 +177,7 @@ function partial() {
     } else {
         const currency = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TOTAL') !== -1)
+            .filter(key => key.indexOf('TAX') !== -1)
             .join()
             .split(' ')
             .filter(key => key != '')
@@ -452,20 +452,20 @@ function partial() {
             //         value: Number(tax.slice(0, -2))
             //     }
             // })
-            .slice(1)
+            // .slice(1)
 
-        // console.log('infoSabreVol', infoSabreVol)
+        console.log('infoSabreVol', infoSabreVol)
 
         let temp = []
-        for (let i = 1; i < infoSabreVol.length; i++) {
+        for (let i = 0; i < infoSabreVol.length; i++) {
             if (infoSabreVol[i] === 'PD') {
-                temp.push(infoSabreVol[i] + infoSabreVol[i - 1])
+                temp.push(infoSabreVol[i] + infoSabreVol[i + 1])
                 i++
             } else {
                 temp.push(infoSabreVol[i])
             }
         }
-        // console.log(temp)
+        console.log(temp)
         const taxVol = temp
             .map(tax => {
                 if (tax.slice(0, 2) === 'PD') {
@@ -586,6 +586,7 @@ function partial() {
             }
 
         }
+        console.log('Оригінальні такси + доплати по таксам + штраф', paidTax)
 
         for (let i = 0; i < filteredtaxVol.length; i++) {
             if (filteredtaxVol[i].paid != 'YES') {
