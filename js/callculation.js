@@ -241,11 +241,11 @@ function partial() {
     }, 0)
     .toFixed(2)
 
-console.log('Тотал такс до поверненн', +sumTaxOrg)
+console.log('Тотал такс', +sumTaxOrg)
 
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
-        .filter(tax => tax != '' && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currencyAll))
+        .filter(tax => tax != '' && tax.slice(-2).indexOf('XT') && tax.slice(-2).indexOf('YQ') && tax.slice(-2).indexOf('YR') && tax.indexOf(currencyAll) && tax.includes('.') && tax.includes('-'))
         .map(tax => {
             return {
                 name: tax.slice(-2),
@@ -386,6 +386,7 @@ console.log('Тотал такс до поверненн', +sumTaxOrg)
 
 
     let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
+    let relustCallculation2 = document.querySelector('#callculation2').value = `reissued-0 / ${farePaidText} ${farePaid}${currencyAll} / ${tktPriceText} ${tktPrice}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
 
 
 
@@ -600,13 +601,14 @@ console.log('Тотал такс до поверненн', +sumTaxOrg)
         paidTax
             .forEach(key => {
                 if (key.addpaid === 'YES') {
-                    resultPart.push('Добір - ' + key.value + key.name)
+                    resultPart.push('Add - ' + key.value + key.name)
                 } else {
-                    resultPart.push('Оригінальна - ' + key.value + key.name)
+                    resultPart.push('Org - ' + key.value + key.name)
                 }
 
             })
-        document.querySelector('#callculation1').value = resultPart.join(' / ')
+        // document.querySelector('#callculation1').value = resultPart.join(' / ')
+        let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')} / TO REF ${fpChoice}`
         // console.log(resultPart)
     }
 
