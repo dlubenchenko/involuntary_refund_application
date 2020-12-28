@@ -587,7 +587,7 @@ console.log('Тотал такс', +sumTaxOrg)
         }
 
         for (let i = 0; i < filteredtaxVol.length; i++) {
-            if (filteredtaxVol[i].paid != 'YES' && filteredtaxVol[i].name != 'СP' && filteredtaxVol[i].name != 'XP' && filteredtaxVol[i].name != 'OB' && filteredtaxVol[i].name != 'DU' && filteredtaxVol[i].name != 'SH' && filteredtaxVol[i].name != 'OD') {
+            if (filteredtaxVol[i].paid != 'YES') {
                 paidTax[paidTax.length] = {
                     addpaid: 'YES',
                     name: filteredtaxVol[i].name,
@@ -597,19 +597,21 @@ console.log('Тотал такс', +sumTaxOrg)
 
         }
         let resultPart = []
-        console.log('Оригінальні такси + доплати по таксам', paidTax)
+        console.log('Оригінальні такси + доплати по таксам + штраф', paidTax)
         paidTax
             .forEach(key => {
-                if (key.addpaid === 'YES') {
+                if (key.addpaid === 'YES' && key.name !== 'СP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD') {
                     resultPart.push('Доплачена - ' + key.value + key.name)
+                } else if (key.name === 'СP' || key.name === 'XP' || key.name === 'OB'  || key.name === 'DU' || key.name === 'SH' || key.name === 'OD') {
+                    resultPart.push('Штраф - ' + key.value + key.name)
                 } else {
                     resultPart.push(key.value + key.name)
-                }
+                } 
 
             })
         // document.querySelector('#callculation1').value = resultPart.join(' / ')
         let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')}`
-        // console.log(resultPart)
+        console.log(resultPart)
     }
 
 
