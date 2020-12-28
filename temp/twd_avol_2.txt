@@ -1,0 +1,34 @@
+SABRE TICKET RECORD                                            
+    INV:0098070                                          PNR:HOONVI
+    TKT:6552409294562    ISSUED:28DEC2020ALA PCC:IN9I IATA:65321723
+    NAME:SAIP/AKNUR MRS                                            
+    FOP:CASH                                                       
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    DV    716  A  05JAN  NQZCIT  1510  OK ASO             OPEN
+    2    DV    701  A  31JAN  CITNQZ  0630  OK ASO             OPEN
+    FARE   KZT10000 PD TAX  4100YR  PD TAX  1750UJ                 
+              TAX  3000CP                                          
+    TOTAL  KZT3000                                                 
+    NQZ DV CIT5000DV NQZ5000KZT10000END                            
+    EXCH TKT:6552409279906/12                                      
+    ISSUED AT:25OCT20ALA       FEF:CASH                            
+    IATA:65321723                                                  
+                                                                   ¥
+
+WTDB*2«
+
+    SABRE TICKET RECORD                                            
+    INV:0088389                                          PNR:HOONVI
+    TKT:6552409279906    ISSUED:25OCT2020ALA PCC:IN9I IATA:65321723
+    NAME:SAIP/AKNUR MRS                                            
+    FOP:CASH                                                       
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    DV    716  A  05JAN  NQZCIT   310P OK ASO             EXCH
+    2    DV    701  A  15JAN  CITNQZ   630A OK ASO             EXCH
+    FARE   KZT10000 TAX  4100YR  TAX  1750UJ                       
+    TOTAL  KZT15850                                                
+    COMM: 800                                                      
+    NQZ DV CIT5000DV NQZ5000KZT10000END                            
+    ENDORSEMENT/RESTRICTION:                                       
+    P044839791                                                     
+    NONREF/HEBO3BPATEH/DV ONLY/FREE BAGGAGE  NOT ALLOWED

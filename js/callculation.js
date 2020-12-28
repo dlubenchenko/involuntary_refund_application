@@ -602,18 +602,19 @@ function partial() {
         console.log('Оригінальні такси + доплати по таксам + штраф', paidTax)
         paidTax
             .forEach(key => {
-                if (key.addpaid === 'YES' && key.name !== 'СP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD') {
+                if (key.addpaid === 'YES' && key.name !== 'CP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD') {
                     resultPart.push('Доплачена - ' + key.value + key.name)
-                } else if (key.name === 'СP' || key.name === 'XP' || key.name === 'OB' || key.name === 'DU' || key.name === 'SH' || key.name === 'OD') {
+                } else if (key.name === 'CP' || key.name === 'XP' || key.name === 'OB' || key.name === 'DU' || key.name === 'SH' || key.name === 'OD') {
                     resultPart.push('Штраф - ' + key.value + key.name)
                 } else {
                     resultPart.push(key.value + key.name)
                 }
 
             })
+        // console.log(resultPart)
 
         let paidTaxSum = paidTax
-            .filter(key => key.name !== 'СP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD')
+            .filter(key => key.name !== 'CP' && key.name !== 'XP' && key.name !== 'OB' && key.name !== 'DU' && key.name !== 'SH' && key.name !== 'OD')
             .map((key) => {
                 return key.value
             })
@@ -625,7 +626,7 @@ function partial() {
 
         // document.querySelector('#callculation1').value = resultPart.join(' / ')
         let relustCallculation1 = document.querySelector('#callculation1').value = `${resultPart.join(' / ')} / TOT TAX ${paidTaxSum}${currencyAll}`
-        console.log(resultPart)
+        // console.log(resultPart)
 
 
     }
