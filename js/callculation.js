@@ -102,6 +102,7 @@ function partial() {
     let totalAll
     let currencyAll
     let bsrAll
+    let currencyAirlineAll
 
 
     const info = document.querySelector('#ticket textarea').value
@@ -187,15 +188,28 @@ function partial() {
             .toString()
         console.log('currency'.toUpperCase(), currency)
 
+        const currencyAirline = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('FARE') !== -1)
+            .join()
+            .split(' ')
+            .filter(key => key != '')
+            .slice(1, 2)
+            .toString()
+            .slice(0, 3)
+            .toString()
+        console.log('currencyAirline'.toUpperCase(), currencyAirline)
+
         const infoSabre = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TAX') !== -1)
+            .filter(key => key.indexOf('TAX') !== -1 && key.indexOf('TAX BREAKDOWN'))
             .join()
             .replace(/\n/g, ' ')
             .replace(/,/g, ' ')
+            .replace(/¥/g, ' ')
             .split(' ')
             .slice(8)
-            .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE'))
+            .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currencyAirline))
             .map(tax => {
                 return {
                     name: tax.slice(-2),
@@ -230,6 +244,7 @@ function partial() {
         allTaxes = infoSabre
         currencyAll = currency
         bsrAll = document.querySelector('#bsr').value = +bsr != '' ? +bsr : 1
+        currencyAirlineAll = currencyAirline
     }
 
     const sumTaxOrg = allTaxes
@@ -440,19 +455,18 @@ function partial() {
 
         const infoSabreVol = infoNewTkt
             .split(/\n/gi)
-            .filter(key => key.indexOf('TAX') !== -1)
+            .filter(key => key.indexOf('TAX') !== -1 && key.indexOf('TAX BREAKDOWN'))
             .join()
             .replace(/\n/g, ' ')
             .replace(/,/g, ' ')
             .split(' ')
-            .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE'))
+            .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currencyAirlineAll))
             // .map(tax => {
             //     return {
             //         name: tax.slice(-2),
             //         value: Number(tax.slice(0, -2))
             //     }
             // })
-            .slice(1)
 
         console.log('infoSabreVol', infoSabreVol)
 

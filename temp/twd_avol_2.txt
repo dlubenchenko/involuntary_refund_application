@@ -39,6 +39,6 @@ WETR*2«
 MD«
 
     TAX BREAKDOWN                                                  ¥
-    TAX     20767YR TAX      1696UA TAX       848UD TAX      5510YK
+    FARE   USD139.00 TAX     20767YR TAX      1696UA TAX       848UD TAX      5510YK
     ENDORSEMENT                                                    
     BSR423.81
