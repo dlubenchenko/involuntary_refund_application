@@ -377,7 +377,7 @@ function partial() {
     let nuc = +document.querySelector('#nuc').value
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
     let fareRef = fare - fareUsed
-    let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
+    let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (+fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
     let fp = document.querySelector('#fp').value
     let fpChoice = document.querySelector('#fp').value != 'FP CC + FP CASH' ? fp + ' ' + toRef : 'FP CC ' + (toRef - +document.querySelector('#cash').value) + currencyAll + ' ' + 'FP CASH ' + document.querySelector('#cash').value + currencyAll
     // console.log(currencyAll)
@@ -394,6 +394,7 @@ function partial() {
 
     //after voluntary
     let infoNewTkt = document.querySelector('#newtax').value
+    
     if (infoNewTkt.indexOf('DOI') !== -1) {
         const currency = infoNewTkt
             .split(/\n/gi)
