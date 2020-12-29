@@ -132,17 +132,17 @@ function partial() {
 
         const infoAmadeus = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TX') !== -1 && key.indexOf(currencyAll))
-            // .join()
-            // .replace(/,/g, ' ')
-            // .split(' ')
-            // .filter(tax => tax != '' && tax.indexOf(currency) && tax.slice(0, 2).indexOf('TX'))
-            // .map(tax => {
-            //     return {
-            //         name: tax.slice(-2),
-            //         value: Number(tax.slice(0, -2))
-            //     }
-            // })
+            .filter(key => key.indexOf('TX') !== -1 && key.indexOf(currency) !== -1)
+            .join()
+            .replace(/,/g, ' ')
+            .split(' ')
+            .filter(tax => tax != '' && tax.indexOf(currency) && tax.slice(0, 2).indexOf('TX'))
+            .map(tax => {
+                return {
+                    name: tax.slice(-2),
+                    value: Number(tax.slice(0, -2))
+                }
+            })
         // console.log('infoAmadeus', infoAmadeus)
 
         const bsr = info
