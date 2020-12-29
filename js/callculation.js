@@ -187,7 +187,7 @@ function partial() {
         allTaxes = infoAmadeus
         fareAlAll = +fareAl
         currencyAll = currency
-        bsrAll = +bsr
+        bsrAll = +bsr[bsr.length - 1].toString()
     } else {
         const currency = info
             .split(/\n/gi)
