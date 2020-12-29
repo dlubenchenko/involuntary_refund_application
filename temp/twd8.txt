@@ -1,0 +1,54 @@
+TKT-0573325039259-260    RCI-                     1A  LOC-J4YE53
+ OD-CAICAI  SI-      FCPI-0   POI-PAR  DOI-14MAR20  IOI-20266002
+   1.REZK/ABDELHALIM MR        ADT            ST
+ 1 OCAI AZ 895   O 15MAR0430 OK NLSOEG        F   15MAR15MAR 1PC
+ 2 XFCO AF9748AZ N 15MAR0910 OK NLSOEG        F   15MAR15MAR 1PC
+ 3 OLAX AF  77   N 03MAR2100 OK NLSOEG        O   03MAR03MAR 1PC
+ 4 XCDG AF1088   L 04MAR1900 OK NLSOEG        O   04MAR04MAR 1PC
+ 5 XOTP RO 101   N 07MAR0030 OK NLSOEG        O I 05MAR05MAR 1PC
+    CAI
+FARE   F EGP      5349.00
+EQUIV    EUR       304.00       BSR     0.056834
+TOTALTAX EUR       262.72
+TOTAL    EUR       566.72 
+/FC CAI AZ X/ROM AF LAX M168.93AF X/PAR AF X/BUH RO CAI M168.93N
+UC337.86END ROE15.832000 XF LAX4.5
+FE NON ENDO -BG AF
+FP CASH
+FOR TAX/FEE DETAILS USE TWD/TAX
+SAC-MULTI/USE TWH
+>
+twd/tax
+TOTALTAX   EUR    262.72                                                        
+TX01 EUR    106.88YR  TX02 EUR     15.00YQ  TX03 EUR      4.68FR                
+TX04 EUR     11.47QX  TX05 EUR      0.89O9  TX06 EUR      2.85JK                
+TX07 EUR     22.27QH  TX08 EUR      8.53XK  TX09 EUR      1.79EQ                
+TX10 EUR      0.86O2  TX11 EUR      8.53EG  TX12 EUR      7.50HB                
+TX13 EUR      9.60IT  TX14 EUR      0.99MJ  TX15 EUR      3.18VT                
+TX16 EUR      3.53XA  TX17 EUR      6.24XY  TX18 EUR      5.25YC                
+TX19 EUR     16.84US  TX20 EUR     16.84US  TX21 EUR      4.99AY                
+TX22 EUR      4.01XF
+
+
+
+
+01 MFFWEG     *          * P1         *   1181.29  *RB    *Y                    
+                                                                                
+LAST TKT DTE 15MAR20 - DATE OF ORIGIN                                           
+------------------------------------------------------------                    
+     AL FLGT  BK T DATE  TIME  FARE BASIS      NVB  NVA   BG                    
+ CAI                                                                            
+XROM AZ   895 Y  Y 15MAR 0430  MFFWEG                     2P                    
+ LAX AF  9748 M  M 15MAR 0910  MFFWEG                     2P                    
+                                                                                
+EGP 17892.00      15MAR20CAI AZ X/ROM AF LAX M1130.11NUC                        
+EUR  1017.00      1130.11END ROE15.832000                                       
+EUR    12.00-YQ   XT EUR 0.89-O9 EUR 2.85-JK EUR 22.27-QH                       
+EUR    53.44-YR   EUR 8.53-XK EUR 1.79-EQ EUR 0.86-O2 EUR                       
+EUR    98.85-XT   8.53-EG EUR 7.50-HB EUR 9.60-IT EUR 0.99-MJ                      
+EUR  1181.29       EUR 3.18-VT EUR 3.53-XA EUR 6.24-XY                       
+                  EUR 5.25-YC EUR 16.84-US                                      
+RATE USED 1EGP=0.056834EUR                                                      
+FARE FAMILIES:    (ENTER FQFn FOR DETAILS, FXY FOR UPSELL)                      
+FARE FAMILY:FC1:1-2:FULLFLEX                                                    
+>                                                 PAGE  2/ 3

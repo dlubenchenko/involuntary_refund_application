@@ -132,7 +132,7 @@ function partial() {
 
         const infoAmadeus = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TX') !== -1 && key.indexOf(currency) !== -1)
+            .filter(key => key.includes('TX') && key.includes(currency))
             .join()
             .replace(/,/g, ' ')
             .split(' ')
@@ -143,7 +143,7 @@ function partial() {
                     value: Number(tax.slice(0, -2))
                 }
             })
-        // console.log('infoAmadeus', infoAmadeus)
+        console.log('infoAmadeus', infoAmadeus)
 
         const bsr = info
             .split(/\n/gi)
@@ -287,7 +287,7 @@ function partial() {
 
     // фільтр FQQ такс
     const allTaxesFqq = taxesFqq
-        .filter(tax => tax != '' && !tax.indexOf(currencyAll))
+        .filter(tax => tax.includes(currencyAll) && tax.includes('-'))
         .join()
         .replace(/,/g, ' ')
         .split(' ')
@@ -298,7 +298,7 @@ function partial() {
                 value: Number(tax.slice(0, -3))
             }
         })
-        console.log(allTaxesFqq)
+        // console.log(allTaxesFqq)
     // пошук одинакових
     const filtertax = (taxValue) => {
         i = 0
@@ -514,7 +514,7 @@ function partial() {
                 temp.push(infoSabreVol[i])
             }
         }
-        console.log(temp)
+        // console.log(temp)
         const taxVol = temp
             .map(tax => {
                 if (tax.slice(0, 2) === 'PD') {
