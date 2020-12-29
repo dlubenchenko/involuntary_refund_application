@@ -174,7 +174,7 @@ function partial() {
 
         const fareAl = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('FARE') !== -1 && key.indexOf('RULES') === -1)
+            .filter(key => key.indexOf('FARE') !== -1 && key.indexOf('RULES') === -1 && key.slice(0, 2).indexOf('FE') === -1)
             .join()
             .split(' ')
             .filter(key => key != -1 && +key > 0)
