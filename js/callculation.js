@@ -227,7 +227,7 @@ function partial() {
 
         const infoSabre = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TAX') !== -1)
+            .filter(key => key.includes('TAX') && !key.includes('BREAKDOWN'))
             .join()
             .replace(/\n/g, ' ')
             .replace(/BREAKDOWN/g, ' ')

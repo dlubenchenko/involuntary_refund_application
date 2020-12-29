@@ -52,3 +52,49 @@ RATE USED 1EGP=0.056834EUR
 FARE FAMILIES:    (ENTER FQFn FOR DETAILS, FXY FOR UPSELL)                      
 FARE FAMILY:FC1:1-2:FULLFLEX                                                    
 >                                                 PAGE  2/ 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ELECTRONIC TICKET RECORD                          CRS CODE:    
+    INV:                  CUST:933100                    PNR:JQLFZV
+    TKT:2353864997862     ISSUED:13FEB20   PCC:EF2J   IATA:37200203
+    NAME:MANDOUR/MOHAMEDMR                                         
+    FORM OF PAYMENT                        FCI: 0                  
+    1    CASH                                                      
+    CPN  A/L  FLT  CLS DATE   BRDOFF  TIME  ST F/B             STAT
+    1    TK   0783  V  24JUN  DOHIST 0555   OK VLS2XPX         OPEN
+                                    NVB:24JUN   NVA:24JUN   BAG:30K
+    2    TK   0694  V  24JUN  ISTCAI 1825   OK VLS2XPX         OPEN
+                                    NVB:24JUN   NVA:24JUN   BAG:30K
+    3    TK   0691  Q  20AUG  CAIIST 0850   OK QLS2XEX         OPEN
+                                    NVB:20AUG   NVA:20AUG   BAG:30K
+    4    TK   0780  Q  20AUG  ISTDOH 2025   OK QLS2XEX         OPEN
+                                    NVB:20AUG   NVA:20AUG   BAG:30K
+    FARE     QAR2240.00                                            
+    TOTAL      USD913.90     EQUIVALENT FARE PAID         USD615.00
+                                                                   ¥
+
+MD«
+
+    FARE CALCULATION                                               ¥
+    DOH TK X/IST TK CAI245.87TK X/IST TK DOH368.68NUC614.55END ROE3.64                                                            
+    TAX BREAKDOWN                                                  
+    TAX    232.00YR TAX     11.00QA TAX      4.10PZ TAX      9.60G4
+    TAX     11.00TR TAX     25.00QH TAX      3.20JK TAX      2.00EQ
+    TAX      1.00O2                                                
+    ENDORSEMENT                                                    
+    NONEND/TK ONLY
