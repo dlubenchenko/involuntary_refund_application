@@ -132,7 +132,7 @@ function partial() {
 
         const infoAmadeus = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('TX') !== -1 $$ key.indexOf(currencyAll))
+            .filter(key => key.indexOf('TX') !== -1 && key.indexOf(currencyAll))
             .join()
             .replace(/,/g, ' ')
             .split(' ')
