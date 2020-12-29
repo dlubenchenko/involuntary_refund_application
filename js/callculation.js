@@ -420,7 +420,7 @@ function partial() {
     // використанний/до повернення тариф/такси / розрахунки
 
     let fare = document.querySelector('#eqv').value = totalAll - +sumTaxOrg
-    let bsr = document.querySelector('#bsr').value = bsrAll != 0 ? bsrAll : (fare / fareAlAll)
+    let bsr = document.querySelector('#bsr').value = bsrAll != 0 ? parseFloat(bsrAll.toFixed(6)) : parseFloat((fare / fareAlAll).toFixed(6))
     let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTaxOrg
     let tktPrice = document.querySelector('#tktprice').value = totalAll
     let nuc = +document.querySelector('#nuc').value

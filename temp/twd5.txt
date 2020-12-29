@@ -17,3 +17,22 @@ twd/tax
 TOTALTAX   UAH      1429                                                        
 TX01 UAH       566YQ  TX02 UAH       284YR  TX03 UAH       285HF                
 TX04 UAH        94UA  TX05 UAH        30UD  TX06 UAH       170YK
+
+
+
+
+
+TKT-4619526238503        RCI-                     1A  LOC-SA73MF
+ OD-LWODNK  SI-      FCPI-0   POI-LWO  DOI-08NOV20  IOI-72323834
+   1.NIKULIN/SERHII MR         ADT            ST
+ 1 OLWO 7W 162   T 02JAN1225 OK TUAOW         O   02JAN02JAN 23K
+ 2 XKBP 7W 103   T 02JAN1525 OK TUAOW         O   02JAN02JAN 23K
+    DNK
+FARE   F USD        40.00
+EQUIV    UAH         1129
+TOTALTAX UAH         1429
+TOTAL    UAH         2558 
+/FC LWO 7W X/IEV 7W DNK40.00USD40.00END
+FE NON ENDO/NON REF/RBK 10USD
+FP CASH
+FOR TAX/FEE DETAILS USE TWD/TAX
