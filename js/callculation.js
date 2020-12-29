@@ -103,6 +103,7 @@ function partial() {
     let currencyAll
     let bsrAll
     let currencyAirlineAll
+    let fareAlAll
 
 
     const info = document.querySelector('#ticket textarea').value
@@ -170,11 +171,23 @@ function partial() {
             .toString()
 
         console.log('Тотал', +total, currency)
+
+        const fareAl = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('FARE') !== -1)
+            .join()
+            .split(' ')
+            .filter(key => key != -1 && +key > 0)
+            .toString()
+    
+        console.log('fareAl', +fareAl)
+
         totalAll = +total
 
         allTaxes = infoAmadeus
+        fareAlAll = +fareAl
         currencyAll = currency
-        bsrAll = document.querySelector('#bsr').value = +bsr[bsr.length - 1].toString() != 0 ? +bsr[bsr.length - 1].toString() : 1
+        bsrAll = +bsr
     } else {
         const currency = info
             .split(/\n/gi)
@@ -199,6 +212,18 @@ function partial() {
             .slice(0, 3)
             .toString()
         console.log('currencyAirline'.toUpperCase(), currencyAirline)
+
+        const fareAl = info
+            .split(/\n/gi)
+            .filter(key => key.indexOf('FARE') !== -1 && key.indexOf('EQUIVALENT') === -1 && key.indexOf('CALCULATION') === -1)
+            .join()
+            .replace(/,/g, ' ')
+            .split(' ')
+            .filter(key => key !== '' && !key.indexOf(currencyAirline))
+            .toString()
+            .slice(3)
+        
+        console.log('fareAl', +fareAl)
 
         const infoSabre = info
             .split(/\n/gi)
@@ -244,8 +269,9 @@ function partial() {
         console.log('infoSabre', infoSabre)
         allTaxes = infoSabre
         currencyAll = currency
-        bsrAll = document.querySelector('#bsr').value = +bsr != '' ? +bsr : 1
+        bsrAll = +bsr
         currencyAirlineAll = currencyAirline
+        fareAlAll = +fareAl
     }
 
     const sumTaxOrg = allTaxes
@@ -392,15 +418,18 @@ function partial() {
 
 
     // використанний/до повернення тариф/такси / розрахунки
+
     let fare = document.querySelector('#eqv').value = totalAll - +sumTaxOrg
+    let bsr = document.querySelector('#bsr').value = bsrAll != 0 ? bsrAll : (fare / fareAlAll)
     let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTaxOrg
     let tktPrice = document.querySelector('#tktprice').value = totalAll
     let nuc = +document.querySelector('#nuc').value
-    let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * +bsrAll).toFixed(2) : Math.ceil(nuc * +roe * +bsrAll)
+    let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * bsr).toFixed(2) : Math.ceil(nuc * +roe * +bsr)
     let fareRef = fare - fareUsed
     let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (+fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
     let fp = document.querySelector('#fp').value
     let fpChoice = document.querySelector('#fp').value != 'FP CC + FP CASH' ? fp + ' ' + toRef : 'FP CC ' + (toRef - +document.querySelector('#cash').value) + currencyAll + ' ' + 'FP CASH ' + document.querySelector('#cash').value + currencyAll
+
     // console.log(currencyAll)
     console.log('Тариф до повернення', fareRef)
     console.log('Використанний тариф', fareUsed)
