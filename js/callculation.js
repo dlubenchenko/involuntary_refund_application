@@ -313,6 +313,7 @@ function partial() {
             }
         })
         // console.log(allTaxesFqq)
+
     // пошук одинакових
     const filtertax = (taxValue) => {
         i = 0
@@ -330,6 +331,7 @@ function partial() {
             j = i + 1
         }
     }
+    
     // виклик фільтру
     filtertax(allTaxesFqq)
     filtertax(allTaxes)
