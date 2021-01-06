@@ -120,6 +120,19 @@ function partial() {
 
     let roe = document.querySelector('#roe').value = roeTemp === 0 ? 1 : roeTemp
 
+            for (let i = 0; i < info.split(/\n/gi).length; i++) {
+                const el = info.split(/\n/gi)[i];
+                if (el.includes('DOI')) {
+                    console.log('NM' + info.split(/\n/gi)[i + 1]
+                        .split(' ')
+                        .filter(key => key.includes('1.'))
+                        .toString()
+                        .replace(/\./g,'')
+                    )
+                }
+            }
+
+
     if (info.indexOf('DOI') !== -1) {
         const currency = info
             .split(/\n/gi)
@@ -234,7 +247,6 @@ function partial() {
             .replace(/,/g, ' ')
             .replace(/¥/g, ' ')
             .split(' ')
-            // .slice(8)
             .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currencyAirline))
             .map(tax => {
                 return {
@@ -246,9 +258,11 @@ function partial() {
 
         const bsr = info
             .split(/\n/gi)
-            .filter(key => key.indexOf('BSR') !== -1)
+            .filter(key => key.includes('BSR'))
             .toString()
-            .trim()
+            .split(' ')
+            .filter(key => key.includes('BSR'))
+            .toString()
             .replace(/BSR/, '')
         console.log('BSR', +bsr)
 
