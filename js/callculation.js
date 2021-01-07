@@ -439,7 +439,7 @@ function partial() {
     let bsr = document.querySelector('#bsr').value = bsrAll != 0 ? parseFloat(bsrAll.toFixed(6)) : parseFloat((fare / fareAlAll).toFixed(6))
     let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTaxOrg
     let tktPrice = document.querySelector('#tktprice').value = totalAll
-    let nuc = +document.querySelector('#nuc').value
+    let nuc = +document.querySelector('#nuc').value.replace(/,/,'.')
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * bsr).toFixed(2) : Math.ceil(nuc * +roe * +bsr)
     let fareRef = fare - fareUsed
     let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (+fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
@@ -449,6 +449,7 @@ function partial() {
     // console.log(currencyAll)
     console.log('Тариф до повернення', fareRef)
     console.log('Використанний тариф', fareUsed)
+
 
 
     let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
