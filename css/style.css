@@ -100,7 +100,7 @@ div:nth-child(9) {
     grid-column: 1 / 7;
 }
 
-#ticket textarea {
+#ticket textarea:not(#callculation) {
     height: 100px;
 }
 
@@ -122,4 +122,8 @@ input.taxes {
 
 .mandatory {
     border: 2px solid red;
+}
+
+#callculation {
+    height: 200px;
 }

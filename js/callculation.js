@@ -313,10 +313,10 @@ function partial() {
             .filter(key => key.includes('ISSUED:'))
             .toString()
             .split(':')
-        console.log(doi[1].length)
+        // console.log(doi[1].length)
         
         doiAll = doi[1].length <= 7 ? doi[1] : doi[1].slice(0, 5) + doi[1].slice(-5).slice(0, 2)
-        console.log('doiAll',doiAll)
+        // console.log('doiAll',doiAll)
         itineraryAll = itinerary
         totalAll = +total
         paxNameAll = 'NM1' + paxName[1]
