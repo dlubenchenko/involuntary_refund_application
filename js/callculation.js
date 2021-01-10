@@ -291,7 +291,7 @@ function partial() {
             .filter(key => key.includes('OK'))
             .map(key => key.split(' ').filter(key => key !== ''))
             .map(key => key.slice(1, 6))
-            .map(key => `SS ${key[1]} ${key[2]} ${key[3]}20 ${key[4]} GK1/WS`)
+            .map(key => `SS ${key[0]}${key[1]} ${key[2]} ${key[3]}20 ${key[4]} GK1/WS`)
             .toString()
             .replace(/,/g,'\n')
         console.log('itinerary', itinerary)
