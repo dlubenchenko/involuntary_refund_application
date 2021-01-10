@@ -104,6 +104,9 @@ function partial() {
     let bsrAll
     let currencyAirlineAll
     let fareAlAll
+    let paxNameAll
+    let itineraryAll = ''
+
 
 
     const info = document.querySelector('#ticket textarea').value
@@ -120,17 +123,7 @@ function partial() {
 
     let roe = document.querySelector('#roe').value = roeTemp === 0 ? 1 : roeTemp
 
-            for (let i = 0; i < info.split(/\n/gi).length; i++) {
-                const el = info.split(/\n/gi)[i];
-                if (el.includes('DOI')) {
-                    console.log('NM' + info.split(/\n/gi)[i + 1]
-                        .split(' ')
-                        .filter(key => key.includes('1.'))
-                        .toString()
-                        .replace(/\./g,'')
-                    )
-                }
-            }
+
 
 
     if (info.indexOf('DOI') !== -1) {
@@ -194,6 +187,20 @@ function partial() {
             .toString()
     
         console.log('fareAl', +fareAl)
+
+        for (let i = 0; i < info.split(/\n/gi).length; i++) {
+            const el = info.split(/\n/gi)[i];
+            if (el.includes('DOI')) {
+                paxName = 'NM' + info.split(/\n/gi)[i + 1]
+                    .split(' ')
+                    .filter(key => key.includes('1.'))
+                    .toString()
+                    .replace(/\./g,'')
+            }
+        }
+        console.log(paxName)
+
+        paxNameAll = paxName
 
         totalAll = +total
 
@@ -278,8 +285,28 @@ function partial() {
 
         console.log('Тотал', +total, currency)
 
-        totalAll = +total
+        // для FQQ
+        const itinerary = info
+            .split(/\n/gi)
+            .filter(key => key.includes('OK'))
+            .map(key => key.split(' ').filter(key => key !== ''))
+            .map(key => key.slice(1, 6))
+            .map(key => `SS ${key[1]} ${key[2]}20 ${key[3]} ${key[4]} GK1/WS`)
+            .toString()
+            .replace(/,/g,'\n')
+        console.log('itinerary', itinerary)
 
+        const paxName = info
+            .split(/\n/gi)
+            .filter(key => key.includes('NAME:'))
+            .toString()
+            .trim()
+            .split(':')
+        console.log(paxName[1])
+        
+        itineraryAll = itinerary
+        totalAll = +total
+        paxNameAll = 'NM1' + paxName[1]
         console.log('infoSabre', infoSabre)
         allTaxes = infoSabre
         currencyAll = currency
@@ -452,8 +479,8 @@ function partial() {
 
 
 
-    let relustCallculation = document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
-    let relustCallculation2 = document.querySelector('#callculation2').value = `reissued-0 / ${farePaidText} ${farePaid}${currencyAll} / ${tktPriceText} ${tktPrice}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
+    document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}\n\n${paxNameAll}\n${itineraryAll}`
+    document.querySelector('#callculation2').value = `reissued-0 / ${farePaidText} ${farePaid}${currencyAll} / ${tktPriceText} ${tktPrice}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
 
 
 
