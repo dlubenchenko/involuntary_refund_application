@@ -71,6 +71,8 @@ function option() {
     })
 }
 
+    let reasone = ''
+
 
 function info() {
 
@@ -96,7 +98,10 @@ function info() {
         totRef = 'TOT TO REF',
         fpCahsCc = 'FP CC + FP CASH',
         fareUsed = 'FARE USED',
-        taxToRef = 'TAX TO REF'
+        taxToRef = 'TAX TO REF',
+        cancelledFltAll = document.querySelector('#cancelledflight').value,
+        cancelledFlt = `${cancelledFltAll.trim().slice(0, 2)}${cancelledFltAll.replace(cancelledFltAll.trim().slice(0, 2), '').replace(cancelledFltAll.trim().slice(-5), '').trim().slice(0, -1).trim()}/${cancelledFltAll.trim().slice(-5)}`
+
 
     const tktNum = [
         [],
@@ -117,7 +122,8 @@ function info() {
         }
     }
 
-    tktNum[0].push(`${involDt}${allInfo[0].value.trim()} ${allInfo[1].value}`)
+    tktNum[0].push(`${involDt}${cancelledFlt} ${allInfo[1].value}`)
+    reasone = `${involDt}${cancelledFlt} ${allInfo[1].value}`
 
     if ('refund5 refund6 refund7'.indexOf(document.itemsCheck.refundType.value) != -1) {
         if (tktNum[2].length > 0) {

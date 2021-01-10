@@ -97,17 +97,21 @@ function partial() {
     const taxesFqq = document.querySelector('#fqq').value
         .split(/\n/g)
 
-    let twdValue = ''
+    let twdValue
 
-    let totalAll = ''
-    let currencyAll = ''
-    let bsrAll = ''
-    let currencyAirlineAll = ''
-    let fareAlAll = ''
+    let totalAll
+    let currencyAll
+    let bsrAll = 1
+    let currencyAirlineAll
+    let fareAlAll
     let paxNameAll = ''
     let itineraryAll = ''
+    let cancelledFltAll = document.querySelector('#cancelledflight').value
+    let doiAll = ''
 
 
+    const cancelledFlt = `${cancelledFltAll.trim().slice(0, 2)} ${cancelledFltAll.replace(cancelledFltAll.trim().slice(0, 2), '').replace(cancelledFltAll.trim().slice(-5), '').trim().slice(0, -1).trim()} / ${cancelledFltAll.trim().slice(-5)}`
+    // console.log(cancelledFlt)
 
     const info = document.querySelector('#ticket textarea').value
     let allTaxes = []
@@ -294,7 +298,7 @@ function partial() {
             .map(key => `SS ${key[0]}${key[1]} ${key[2]} ${key[3]}20 ${key[4]} GK1/WS`)
             .toString()
             .replace(/,/g,'\n')
-        console.log('itinerary', itinerary)
+        // console.log('itinerary', itinerary)
 
         const paxName = info
             .split(/\n/gi)
@@ -302,8 +306,17 @@ function partial() {
             .toString()
             .trim()
             .split(':')
-        console.log(paxName[1])
+        // console.log(paxName[1])
+
+        const doi = info
+            .split(' ')
+            .filter(key => key.includes('ISSUED:'))
+            .toString()
+            .split(':')
+        console.log(doi[1].length)
         
+        doiAll = doi[1].length <= 7 ? doi[1] : doi[1].slice(0, 5) + doi[1].slice(-5).slice(0, 2)
+        console.log('doiAll',doiAll)
         itineraryAll = itinerary
         totalAll = +total
         paxNameAll = 'NM1' + paxName[1]
@@ -479,7 +492,7 @@ function partial() {
 
 
 
-    document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}\n\n${paxNameAll}\n${itineraryAll}`
+    document.querySelector('#callculation').value = `${fareUsd} ${fareUsed}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}\n\n${paxNameAll}\n${itineraryAll}\nFXX/S /R,UP,${doiAll}\n3OTHS/${reasone}§3OSI YY ${reasone}§5${reasone}\nSR OTHS YY - ${reasone};OS YY ${reasone};rm ${reasone}`
     document.querySelector('#callculation2').value = `reissued-0 / ${farePaidText} ${farePaid}${currencyAll} / ${tktPriceText} ${tktPrice}${currencyAll} / ${taxToRef} ${resultTax.join(' ')} (${sumTax}${currencyAll}) / TO REF ${fpChoice}`
 
 
