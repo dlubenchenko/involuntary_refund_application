@@ -398,7 +398,7 @@ function partial() {
     // видалення пустих значень FQQ такс
     const filteredAllTaxesFqq = allTaxesFqq
         .filter(tax => tax.name != '')
-    console.log('Просумовані такси доплат', filteredAllTaxesFqq)
+    console.log('Просумовані такси fqq', filteredAllTaxesFqq)
 
 
     // всі такси - FQQ такси = такси до повернення
