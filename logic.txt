@@ -1,0 +1,3 @@
+// найти индекс
+['   1.MARKAUTSOU/DZMITRY MR     ADT            ST',' 1 OMSQ AF3767B2 L 07JAN1140 OK NS50IBR4      E S 07JAN07JAN 1PC']
+	.forEach((key, i) => key.includes(' 1 OMSQ AF3767B2 L 07JAN1140 OK NS50IBR4      E S 07JAN07JAN 1PC') && console.log(i))

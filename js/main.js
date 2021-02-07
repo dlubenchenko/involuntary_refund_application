@@ -218,3 +218,9 @@ function clearAll() {
     document.querySelector('#tktNumList').value = 'ticket0'
     document.querySelector('#refundType').value = 'Оберіть тип повернення'
 }
+
+
+
+
+
+

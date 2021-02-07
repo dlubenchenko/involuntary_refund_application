@@ -35,10 +35,6 @@ function kiwi() {
     }
     // console.log(kiwiToFilter)
 
-
-
-
-
     for (let i = 0; i < kiwiToFilter.length; i++) {
         const el = kiwiToFilter[i]
         // console.log(el)
@@ -189,8 +185,19 @@ function partial() {
             .split(' ')
             .filter(key => key != -1 && +key > 0)
             .toString()
-    
+
+
         console.log('fareAl', +fareAl)
+
+        const doi = info
+            .split(' ')
+            .filter(key => key.includes('DOI-'))
+            .toString()
+            .split('-')
+            .filter(key => !key.includes('DOI'))
+            .toString()
+
+        console.log('doi', doi)
 
         for (let i = 0; i < info.split(/\n/gi).length; i++) {
             const el = info.split(/\n/gi)[i];
@@ -199,7 +206,7 @@ function partial() {
                     .split(' ')
                     .filter(key => key.includes('1.'))
                     .toString()
-                    .replace(/\./g,'')
+                    .replace(/\./g, '')
             }
         }
         console.log(paxName)
@@ -207,7 +214,7 @@ function partial() {
         paxNameAll = paxName
 
         totalAll = +total
-
+        doiAll = doi
         allTaxes = infoAmadeus
         fareAlAll = +fareAl
         currencyAll = currency
@@ -246,7 +253,7 @@ function partial() {
             .filter(key => key !== '' && !key.indexOf(currencyAirline))
             .toString()
             .slice(3)
-        
+
         console.log('fareAl', +fareAl)
 
         const infoSabre = info
@@ -297,7 +304,7 @@ function partial() {
             .map(key => key.slice(1, 6))
             .map(key => `SS ${key[0]}${key[1]} ${key[2]} ${key[3]}20 ${key[4]} GK1/WS`)
             .toString()
-            .replace(/,/g,'\n')
+            .replace(/,/g, '\n')
         // console.log('itinerary', itinerary)
 
         const paxName = info
@@ -314,7 +321,7 @@ function partial() {
             .toString()
             .split(':')
         // console.log(doi[1].length)
-        
+
         doiAll = doi[1].length <= 7 ? doi[1] : doi[1].slice(0, 5) + doi[1].slice(-5).slice(0, 2)
         // console.log('doiAll',doiAll)
         itineraryAll = itinerary
@@ -352,7 +359,7 @@ function partial() {
                 value: Number(tax.slice(0, -3))
             }
         })
-        // console.log(allTaxesFqq)
+    // console.log(allTaxesFqq)
 
     // пошук одинакових
     const filtertax = (taxValue) => {
@@ -371,7 +378,7 @@ function partial() {
             j = i + 1
         }
     }
-    
+
     // виклик фільтру
     filtertax(allTaxesFqq)
     filtertax(allTaxes)
@@ -479,7 +486,7 @@ function partial() {
     let bsr = document.querySelector('#bsr').value = bsrAll != 0 ? parseFloat(bsrAll.toFixed(6)) : parseFloat((fare / fareAlAll).toFixed(6))
     let farePaid = document.querySelector('#farepaid').value = totalAll - +sumTaxOrg
     let tktPrice = document.querySelector('#tktprice').value = totalAll
-    let nuc = +document.querySelector('#nuc').value.replace(/,/,'.')
+    let nuc = +document.querySelector('#nuc').value.replace(/,/, '.')
     let fareUsed = document.querySelector('#fareused').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? +(nuc * +roe * bsr).toFixed(2) : Math.ceil(nuc * +roe * +bsr)
     let fareRef = fare - fareUsed
     let toRef = document.querySelector('#tottoref').value = currencyAll != 'UAH' && currencyAll != 'RUB' && currencyAll != 'KZT' ? (+fareRef + +sumTax).toFixed(2) : Math.ceil(fareRef + +sumTax)
@@ -501,7 +508,7 @@ function partial() {
 
     //after voluntary
     let infoNewTkt = document.querySelector('#newtax').value
-    
+
     if (infoNewTkt.indexOf('DOI') !== -1) {
         const currency = infoNewTkt
             .split(/\n/gi)
@@ -553,12 +560,12 @@ function partial() {
             .replace(/,/g, ' ')
             .split(' ')
             .filter(tax => tax != '' && tax.indexOf('TAX') && tax.indexOf('FARE') && tax.indexOf(currencyAirlineAll))
-            // .map(tax => {
-            //     return {
-            //         name: tax.slice(-2),
-            //         value: Number(tax.slice(0, -2))
-            //     }
-            // })
+        // .map(tax => {
+        //     return {
+        //         name: tax.slice(-2),
+        //         value: Number(tax.slice(0, -2))
+        //     }
+        // })
 
         console.log('infoSabreVol', infoSabreVol)
 
