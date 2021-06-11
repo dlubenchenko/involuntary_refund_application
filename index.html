@@ -1,296 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Refund application for involuntary</title>
-</head>
+		<title>Refund application for involuntary</title>
+	</head>
 
-<body>
-    <form name="itemsCheck" id="itemsCheck">
-        
-        <select class="" name="Refund application" id="refundType" onchange="option()" class="">
-            <option value="Оберіть тип повернення" disabled selected>Оберіть тип повернення</option>
-            <option value="refund1">Повне повернення</option>
-            <option value="refund2">Повне повернення(переоформленно без доплат)</option>
-            <option value="refund3">Повне повернення(переоформленно без доплат для Altea, Farelogix)</option>
-            <option value="refund4">Повне повернення(переоформленно з доплатами)</option>
-            <option value="refund5">Частково використанний квиток</option>
-            <option value="refund6" disabled>Частково використанний квиток(переоформленно з доплатами)</option>
-            <option value="refund7" disabled>Частково використанний квиток(переоформленно без доплат)</option>
-            <option value="refund8">Парсер Ківі</option>
-            <option value="refund9">Парсер GH</option>
-            <option value="refund010">Парсер FlyArystan</option>
-        </select>
-        <select class="" name="tickets" id="tktNumList" onchange="option()" class="">
-            <option value="ticket0">Кількість квитків</option>
-            <option value="ticket1">1</option>
-            <option value="ticket2">2</option>
-            <option value="ticket3">3</option>
-            <option value="ticket4">4</option>
-            <option value="ticket5">5</option>
-            <option value="ticket6">6</option>
-            <option value="ticket7">7</option>
-            <option value="ticket8">8</option>
-            <option value="ticket9">9</option>
-        </select>
-        <select class="" name="emd" id="emdNumList" onchange="option()" class="">
-            <option value="Кількість EMD">Кількість EMD</option>
-            <option value="emd1">1</option>
-            <option value="emd2">2</option>
-            <option value="emd3">3</option>
-            <option value="emd4">4</option>
-            <option value="emd5">5</option>
-            <option value="emd6">6</option>
-            <option value="emd7">7</option>
-            <option value="emd8">8</option>
-            <option value="emd9">9</option>
-        </select>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-3">
+					<div class="row">
+						<div class="col">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>Open this select menu</option>
+								<option value="1">Парсер ківі</option>
+								<option value="2">Парсер Glory</option>
+								<option value="3">Парсер SkyUp</option>
+								<option value="4">Парсер S7</option>
+								<option value="5">Парсер TUI</option>
+							</select>
+							<select class="form-select" aria-label="Default select example">
+								<option selected>Open this select menu</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+							<select class="form-select" aria-label="Default select example">
+								<option selected>Open this select menu</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+							<button type="button" class="btn btn-dark">Тиць</button>
+							<button type="button" class="btn btn-dark">Чік</button>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="input-group">
+						<span class="input-group-text">Введіть текст</span>
+						<textarea
+							class="form-control"
+							aria-label="With textarea"
+						></textarea>
+					</div>
+					<div class="input-group">
+						<span class="input-group-text">Результат</span>
+						<textarea
+							class="form-control"
+							aria-label="With textarea"
+							readonly
+						></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <textarea name="" class="itemsCheck result" placeholder="Результат" id=""></textarea>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+			crossorigin="anonymous"
+		></script>
 
-        <input class="but" type="button" value="ТИЦЬ" onclick="partial()">
-
-        <input class="butclear" type="button" value="Мітла" onclick="clearAll()">
-
-    </form>
-
-    <form id="ticket" action="ticket1" class="tkt ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9 grid">
-
-        <div class="refund refund3 refund4 refund5 refund6 refund7 ticket textarea">
-            <textarea class="ticket mandatory" name="ticket" id="ticket" placeholder="Вставити квиток Amadeus/Sabre/Altea, звернути увагу чи не переноситься ROE на наступний рядок" rows="5"></textarea>
-        </div>
-                
-        <div class="refund refund5 fqq textarea">
-            <textarea class="mandatory" placeholder="Вставити інфу з FQQ, звернути увагу чи не переноситься одна з такс на наступний рядок" id="fqq" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund4 refund6 refund7 newtax textarea">
-            <textarea class="mandatory" placeholder="Вставити новий квиток обов'язково через WTDB (на разі тільки Sabre)" id="newtax" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund8 textarea kiwi" onchange="kiwi()">
-            <textarea class="mandatory" name="ticket" id="kiwi" placeholder="Вставити строку ківі" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund9 textarea glory" onchange="glory()">
-            <textarea class="mandatory" name="ticket" id="glory" placeholder="Вставити строку GH" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund010 textarea arystan" onchange="arystan()">
-            <textarea class="mandatory" name="ticket" id="arystan" placeholder="Вставити строку FlyArystan" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund5 textarea">
-            <textarea class="callculation" name="ticket" id="callculation" placeholder="Розрахунки"></textarea>
-        </div>
-
-        <div class="refund refund4 textarea">
-            <textarea class="callculation1" name="ticket" id="callculation1" placeholder="Розрахунки" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund3 textarea">
-            <textarea class="callculation2" name="ticket" id="callculation2" placeholder="Розрахунки" rows="5"></textarea>
-        </div>
-
-        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7">
-            <label for="cancelledflight">Відмінений рейс:</label>
-            <input onchange="info()" class="info mandatory" type="cancelledflight" id="cancelledflight" placeholder="Відмінений рейс">
-        </div>
-
-        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7">
-            <label for="reason">Причина(обрати):</label>
-            <select onchange="info()" class="info mandatory" name="reason" id="reason" for="reason">
-                <option disabled selected value="">Шо трапилось?</option>
-                <option value="CNX">Відмінено</option>
-                <option value="SKCHG">Зміни</option>
-                <option value="SKCHG AND LOST MCT">Нестиковка</option>
-            </select>
-        </div>
-
-        
-
-        <div class="block refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 ticketnumber" id="ticketnumber">
-            <label for="ticketnumber">Номер квитка(прописати):</label>
-            <input onchange="info()" type="text" id="ticket1" class="mandatory info ticketnumber ticket ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket2" class="mandatory info ticketnumber ticket ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket3" class="mandatory info ticketnumber ticket ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket4" class="mandatory info ticketnumber ticket ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket5" class="mandatory info ticketnumber ticket ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket6" class="mandatory info ticketnumber ticket ticket6 ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket7" class="mandatory info ticketnumber ticket ticket7 ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket8" class="mandatory info ticketnumber ticket ticket8 ticket9" placeholder="Номер квитка">
-            <input onchange="info()" type="text" id="ticket9" class="mandatory info ticketnumber ticket ticket9" placeholder="Номер квитка">
-        </div>
-
-        <div class="block refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 ticketnumber" id="ticketdoi">
-            <label for="doi">Дата виписки квитка(прописати):</label>
-            <input onchange="info()" type="doi" id="doiticket" class="mandatory info ticketnumber ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки квитка">
-        </div>
-
-        <div class="block refund refund2 refund3 refund4 refund6 refund7 newticketnumber" id="newticketnumber">
-            <label for="newticketnumber">Номер нового квитка(прописати):</label>
-            <input onchange="info()" type="text" id="newticketnumber1" class="mandatory info newticketnumber ticket ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber2" class="mandatory info newticketnumber ticket ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber3" class="mandatory info newticketnumber ticket ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber4" class="mandatory info newticketnumber ticket ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber5" class="mandatory info newticketnumber ticket ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber6" class="mandatory info newticketnumber ticket ticket6 ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber7" class="mandatory info newticketnumber ticket ticket7 ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber8" class="mandatory info newticketnumber ticket ticket8 ticket9" placeholder="Номер нового квитка">
-            <input onchange="info()" type="text" id="newticketnumber9" class="mandatory info newticketnumber ticket ticket9" placeholder="Номер нового квитка">
-        </div>
-
-        <div class="block refund refund2 refund3 refund4 refund6 refund7 newticketnumber" id="newticketdoi">
-            <label for="newticketnumber">Дата виписки нового квитка:</label>
-            <input onchange="info()" type="text" id="doinewticketnumber" class="mandatory info newticketnumber ticket ticket1 ticket2 ticket3 ticket4 ticket5 ticket6 ticket7 ticket8 ticket9" placeholder="Дата виписки нового квитка">
-        </div>
-
-        <div class="block refund emdnumber" id="emdnumber">
-            <label for="emdnumber">Номер EMD(прописати):</label>
-            <input onchange="info()" type="text" id="emdnumber1" class="mandatory info emdnumber ticket emd1 emd2 emd3 emd4 emd5 emd6 emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber2" class="mandatory info emdnumber ticket emd2 emd3 emd4 emd5 emd6 emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber3" class="mandatory info emdnumber ticket emd3 emd4 emd5 emd6 emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber4" class="mandatory info emdnumber ticket emd4 emd5 emd6 emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber5" class="mandatory info emdnumber ticket emd5 emd6 emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber6" class="mandatory info emdnumber ticket emd6 emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber7" class="mandatory info emdnumber ticket emd7 emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber8" class="mandatory info emdnumber ticket emd8 emd9" placeholder="Номер EMD">
-            <input onchange="info()" type="text" id="emdnumber9" class="mandatory info emdnumber ticket emd9" placeholder="Номер EMD">
-        </div>
-
-        <div class="block refund emdnumber" id="emddoi">
-            <label for="emddoi">Дата виписки EMD:</label>
-            <input onchange="info()" type="text" class="mandatory info emdnumber" id="doiemdnumber" placeholder="Дата виписки EMD">
-        </div>
-
-        <div class="block refund refund5 refund6 refund7">
-            <label for="couponstoref">Купони до повернення(заповнити):</label>
-            <input onchange="info()" class="mandatory info" type="text" id="couponstoref" placeholder="Купони до повернення">
-        </div>
-
-        <div class="block refund refund3 refund7">
-            <label for="farepaid">Оплачений тариф:</label>
-            <input onchange="info()" class="info" type="text" id="farepaid" placeholder="FARE PAID" disabled>
-        </div>
-
-        <div class="block refund refund4 refund6">
-            <label for="addpaid">Тариф + доплати по торафу</label>
-            <input onchange="info()" class="info" type="text" id="addpaid" placeholder="FARE PAID + ADD PAID">
-        </div>
-
-        <div class="block refund refund3">
-            <label for="tktprice">Вартість квитка:</label>
-            <input onchange="info()" class="info" type="text" id="tktprice" placeholder="TKT PRICE" disabled>
-        </div>
-
-        <div class="block refund refund5 refund6 refund7">
-            <label for="fareused">Використанний тариф:</label>
-            <input onchange="info()" class="info" type="text" id="fareused" placeholder="FARE USED" disabled>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="tottoref">До повернення:</label>
-            <input onchange="info()" class="info" type="text" id="tottoref" placeholder="TOT TO REF" disabled>
-        </div>
-
-        <div class="block refund refund3 refund5 refund6 refund7">
-            <label for="taxtoref">Такси до повернення:</label>
-            <input onchange="info()" class="info taxtoref" type="text" id="taxtoref" placeholder="TAX TO REF" disabled>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="bsr">BSR:</label>
-            <input onchange="info()" class="info" type="text" id="bsr" placeholder="BSR" disabled></textarea>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="roe">ROE:</label>
-            <input onchange="info()" class="info" type="text" id="roe" placeholder="ROE" disabled></textarea>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="nuc">Використано NUC(заповнити):</label>
-            <input onchange="info()" class="info mandatory" type="text" id="nuc" placeholder="використано NUC"></textarea>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="eqv">Тариф/Еквівалент:</label>
-            <input onchange="info()" class="info" type="text" id="eqv" placeholder="Тариф/еквівалент" disabled></textarea>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="yq">Використана YQ(заповнити):</label>
-            <input onchange="info()" class="info mandatory" type="text" id="yq" placeholder="використана YQ вручну"></textarea>
-        </div>
-
-        <div class="block refund refund5">
-            <label for="yr">Використана YR(заповнити):</label>
-            <input onchange="info()" class="info mandatory" type="text" id="yr" placeholder="використана YR вручну"></textarea>
-        </div>
-        
-        <div class="refund refund1 refund2 refund3 refund4 refund5 refund6 refund7 fp">
-            <label for="fp">Форма оплати(обрати):</label>
-            <select class="info mandatory" name="fp1" id="fp" onchange="findFp()">
-                <option selected value="" disabled>Шо там по оплаті?</option>
-                <option value="FP CASH">FP CASH</option>
-                <option value="FP CC">FP CC</option>
-                <option value="FP CC + FP CASH">FP CC + CASH</option>
-            </select>
-        </div>
-
-        <div class="block refund cash">
-            <label for="cash">Кеш:</label>
-            <input onchange="info()" class="info" type="text" id="cash" placeholder="FP CASH">
-        </div>
-
-        <div class="block refund cc">
-            <label for="cc">Карта:</label>
-            <input onchange="info()" class="info" type="text" id="cc" placeholder="FP CC">
-        </div>
-
-        <div class="refund" id="taxes">
-            <input id="tax1" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax2" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax3" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax4" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax5" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax6" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax7" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax8" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax9" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax10" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax11" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax12" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax13" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax14" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax15" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax16" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax17" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax18" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax19" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax21" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax22" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax23" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax24" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax25" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax26" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax27" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax28" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax29" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax30" type="text" class="refund taxes info" onchange="taxes()" disabled>
-            <input id="tax31" type="text" class="refund taxes info" onchange="taxes()" disabled>
-        </div>
-
-    </form>
-
-
-    <script src="js/main.js"></script>
-    <script src="js/callculation.js"></script>
-</body>
-
+		<script src="js/main.js"></script>
+		<script src="js/callculation.js"></script>
+	</body>
 </html>
