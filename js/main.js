@@ -1,3 +1,7 @@
+function redirect(){
+    window.location = "https://involuntary-squad.web.app/";
+}
+
 function findFp() {
     for (let j = 0; j < document.getElementsByClassName('fp').length; j++) {
         if (document.getElementById('fp').value === 'FP CASH') {
