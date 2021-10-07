@@ -1,0 +1,34 @@
+09:00
+Tue 7 Sep
+Glasgow
+GLA
+Aer Lingus
+55m
+Aer Lingus
+Airline:
+Aer Lingus
+Stobart Air
+Operating airline:
+Aer Lingus
+Flight no:
+EI 0223
+09:55
+Tue 7 Sep
+Dublin
+DUB
+
+11:00
+Tue 7 Sep
+Dublin
+DUB
+United Airlines
+7h 55m
+United Airlines
+Airline:
+United Airlines
+Flight no:
+UA 981
+12:55
+Tue 7 Sep
+Chicago
+ORD

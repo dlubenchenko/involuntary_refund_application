@@ -3,18 +3,28 @@ body {
 
 .container {
 	margin-top: 1rem;
-	border: 1px solid blue;
+	width: 50%;
+	display: none;
 }
 
-.row,
-.col {
-	/* border: 1px solid black; */
+.container-fluid {
+	width: 80%;
+	margin-top: 1rem;
+	/* border: 1px solid blue; */
 }
 
-.col-3:nth-child(1) {
-	/* border: 2px solid blue; */
+.first-block,
+.third-block,
+.fourth-block,
+.container {
+	background-color: coral;
+	border-radius: 0.5rem;
 }
 
 .width {
 	width: 100%;
+}
+
+.dropdown-menu {
+	border: 1px solid black;
 }
