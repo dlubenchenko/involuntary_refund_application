@@ -1,6 +1,6 @@
-function redirect(){
-    window.location = "https://involuntary-squad.web.app/";
-}
+// function redirect(){
+//     window.location = "https://involuntary-squad.web.app/";
+// }
 
 function findFp() {
     for (let j = 0; j < document.getElementsByClassName('fp').length; j++) {
